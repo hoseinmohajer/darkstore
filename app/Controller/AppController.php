@@ -31,9 +31,28 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	// public $components = array(
+	// 	'Session',
+	// 	'Auth' => array(
+	// 		'loginRedirect' => array(
+	// 			'controller' => 'Users',
+	// 			'action' => 'admin_admin'
+	// 		),
+	// 		'logoutRedirect' => array(
+	// 			'controller' => 'Users',
+	// 			'action' => 'admin_login'
+	// 		),
+	// 		'authenticate' => array(
+	// 			'Form' => array(
+	// 				'passwordHasher' => 'Simple'
+	// 			)
+	// 		)
+	// 	)
+	// );
 	public function beforeFilter(){
 		if(isset($this->params['prefix']) && ($this->params['prefix'] === 'admin')){
 			$this->layout = 'admin';
 		}
+		// $this->Auth->allow('admin_signup', 'admin_login', 'admin_logout');
 	}
 }

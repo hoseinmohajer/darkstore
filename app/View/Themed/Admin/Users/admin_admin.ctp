@@ -1,16 +1,16 @@
 <div class="testing">
-<header class="main">
-	<h1><strong>Dark</strong> Store</h1>
-</header>
-<section class="user">
-	<div class="profile-img">
-		<p><?php  echo $this->Html->image('/imgs/uiface2.png', array('width' => '40px', "height" => '40px','alt'=>'AdministratorImg'));
-?> Administrator</p>
-	</div>
-	<div class="buttons">
-		<span class="button blue"><a href="login">Logout</a></span>
-	</div>
-</section>
+	<header class="main">
+		<h1><strong>Dark</strong> Store</h1>
+	</header>
+	<section class="user">
+		<div class="profile-img">
+			<p><?php  echo $this->Html->image('/imgs/uiface2.png', array('width' => '40px', "height" => '40px','alt'=>'AdministratorImg'));
+	?> Administrator</p>
+		</div>
+		<div class="buttons">
+			<span class="button blue"><a href="logout">Logout</a></span>
+		</div>
+	</section>
 </div>
 <nav>
 	<ul>
