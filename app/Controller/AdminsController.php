@@ -7,7 +7,6 @@ class AdminsController extends AppController{
 	}
 	public $helpers = array('Html', 'Form', 'Session');
 	public function admin_index(){
-		
 	}
 }
 

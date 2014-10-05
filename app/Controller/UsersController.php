@@ -9,8 +9,10 @@ class UsersController extends AppController{
 	public $helpers = array('Html', 'Form', 'Session');
 	public $components = array('Auth');
 	public function admin_index(){
+		$this->layout = 'admin';
 	}
 	public function admin_login(){
+		$this->set('title_for_layout', 'Login');
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirect());
