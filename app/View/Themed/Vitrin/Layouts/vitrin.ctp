@@ -8,42 +8,14 @@
 <?php echo $this->Html->charset(); ?>
 <title>Dark Store | <?php echo $title_for_layout; ?></title>
 <?php 
-	echo $this->Html->css(array('foundation.min', 'styles'));
-	echo $this->Html->css(array('jquery.titanlighbox', 'settings'));
-	echo $this->Html->css(array('googleapis'));
-	echo $this->Html->script(array('foundation.min', 'modernizr.foundation', 'app', 'jquery.1.7.2', 'jquery.min', 'jquery.themepunch.plugins.min' , 'jquery.themepunch.revolution.min'));
-	echo $this->Html->css(array('farbtastic', 'themes_panel', 'colors'));
-
-	
-	// echo $this->fetch('css');
-	// echo $this->fetch('script');
+	echo $this->Html->css(array('foundation.min', 'styles', '/titan/css/jquery.titanlighbox', '/rs-plugin/css/settings', '/fonts/googleapis'));
+	echo $this->Html->script(array('foundation.min', 'modernizr.foundation', 'app', 'jquery.1.7.2', 'jquery.min', '/rs-plugin/js/jquery.themepunch.plugins.min' , '/rs-plugin/js/jquery.themepunch.revolution.min'));
+	echo $this->Html->css(array('/themes_panel/farbtastic/farbtastic', '/themes_panel/themes_panel', 'colors'));
+	echo $this->fetch('css');
+	echo $this->fetch('script');
 ?>
-<!-- <link rel="stylesheet" href="files/css/foundation.min.css"> -->
-<!-- <link rel="stylesheet" href="files/css/styles.css"> -->
-
-<!-- <link rel="icon" href="files/images/favicon.ico" /> -->
-
-<!-- <link href="files/titan/css/jquery.titanlighbox.css" rel="stylesheet"> -->
-<!-- REVOLUTION BANNER CSS SETTINGS -->
-<!-- <link rel="stylesheet" type="text/css" href="files/rs-plugin/css/settings.css" media="screen" /> -->
-<!-- GOOGLE FONT - SOURCE SANS PRO -->
-<!-- <link href='files/fonts/googleapis.css' rel='stylesheet'> -->
-<!-- JAVASCRIPT FOUNDATION (COMPRESSED) -->
-<!-- <script src="files/js/foundation.min.js"></script> -->
-<!-- <script src="files/js/modernizr.foundation.js"></script> -->
-<!-- <script src="files/js/app.js"></script> -->
-<!-- <script src="files/js/jquery.1.7.2.js"></script> -->
-<!-- <script src="files/js/jquery.min.js"></script> -->
-<!-- JQUERY KENBURN SLIDER  -->
-<!-- <script src="files/rs-plugin/js/jquery.themepunch.plugins.min.js"></script> -->
-<!-- <script src="files/rs-plugin/js/jquery.themepunch.revolution.min.js"></script> -->
-<!-- THEMES PANEL -->
-<!-- <link rel="stylesheet" href="files/themes_panel/farbtastic/farbtastic.css"> -->
-<!-- <link rel="stylesheet" href="files/themes_panel/themes_panel.css"> -->
-<!-- <link rel="stylesheet" href="files/css/colors.css"> -->
-<!-- IE Fix for HTML5 Tags -->
-<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<!--[if lt IE 9]>
+		<?php echo $this->Html->script(array('/html5shiv.googlecode/html5')); ?>
 	<![endif]-->
 </head>
 <body>
@@ -54,12 +26,14 @@
 		<div class="segment">
 			<h6>Theme Colour</h6>
 			<ul class="theme buttons">
-				<li><a href="#" title="purple"><img src="files/themes_panel/buttons/theme_purple.jpg" alt="" /></a></li>
-				<li><a href="#" title="pink"><img src="files/themes_panel/buttons/theme_pink.jpg" alt="" /></a></li>
-				<li><a href="#" title="blue"><img src="files/themes_panel/buttons/theme_blue.jpg" alt="" /></a></li>
-				<li><a href="#" title="green"><img src="files/themes_panel/buttons/theme_green.jpg" alt="" /></a></li>
-				<li><a href="#" title="orange"><img src="files/themes_panel/buttons/theme_orange.jpg" alt="" /></a></li>
-				<li><a href="#" title="red"><img src="files/themes_panel/buttons/theme_red.jpg" alt="" /></a></li>
+				<?php 
+					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_purple.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
+					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_pink.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
+					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_blue.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
+					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_green.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
+					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_orange.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
+					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_red.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
+				?>
 			</ul>
 		</div>
 		<div class="segment"> Background
@@ -69,9 +43,9 @@
 				</form>
 				</a> </div>
 		</div>
-		<div class="segment noborder"> <a class="reset_btn" href="#">Reset</a> </div>
+		<div class="segment noborder"> <a class="reset_btn" href="javascript:void(0);">Reset</a> </div>
 	</div>
-	<div id="toggle_button"><a href="#"></a></div>
+	<div id="toggle_button"><a href="javascript:void(0);"></a></div>
 	<div id="colorpicker"></div>
 </div>
 <!-- END THEMES PANEL --> 
@@ -87,15 +61,15 @@
 				<ul>
 					<!-- RESPONSIVE NAVIGATION -->
 					<li class="name">
-						<h1><a href="#"> Please select your page</a></h1>
+						<h1><a href="javascript:void(0);"> Please select your page</a></h1>
 					</li>
-					<li class="toggle-topbar"><a href="#"></a></li>
+					<li class="toggle-topbar"><a href="javascript:void(0);"></a></li>
 					<!-- END RESPONSIVE NAVIGATION -->
 				</ul>
 				<section>
 					<ul class="right">
 						<li> <a class="active" href="index-2.html">Home</a> </li>
-						<li class="has-dropdown"> <a href="#">Pages</a>
+						<li class="has-dropdown"> <a href="javascript:void(0);">Pages</a>
 							<ul class="dropdown">
 								<li><a href="left_sidebar.html">Left Sidebar Page</a></li>
 								<li><a href="full_width.html">Full Width Page</a></li>
@@ -103,7 +77,7 @@
 								<li><a href="error.html">404 Error Page</a></li>
 							</ul>
 						</li>
-						<li class="has-dropdown"> <a href="#">Shortcodes</a>
+						<li class="has-dropdown"> <a href="javascript:void(0);">Shortcodes</a>
 							<ul class="dropdown">
 								<li><a href="columns.html">Columns</a></li>
 								<li><a href="typography.html">Typography</a></li>
@@ -112,13 +86,13 @@
 								<li><a href="pricing_tables.html">Pricing Tables</a></li>
 							</ul>
 						</li>
-						<li class="has-dropdown"> <a href="#">Blog</a>
+						<li class="has-dropdown"> <a href="javascript:void(0);">Blog</a>
 							<ul class="dropdown">
 								<li><a href="blog.html">Blog Index</a></li>
 								<li><a href="single_post.html">Single Post</a></li>
 							</ul>
 						</li>
-						<li class="has-dropdown"> <a href="#">Portfolio</a>
+						<li class="has-dropdown"> <a href="javascript:void(0);">Portfolio</a>
 							<ul class="dropdown">
 								<li><a href="portfolio_2_col.html" class="">Portfolio 2 Columns</a></li>
 								<li><a href="portfolio_3_col.html">Portfolio 3 Columns</a></li>
@@ -141,7 +115,8 @@
 	<div class="fullwidthbanner">
 		<ul>
 			<!-- THE FIRST SLIDE -->
-			<li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-delay="9400" data-thumb="files/images/thumbs/thumb2.jpg"> <img src="files/images/slides/slide1.jpg" >
+			<li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-delay="9400" data-thumb="files/images/thumbs/thumb2.jpg">
+				<?php  echo $this->Html->image('/images/slides/slide1.jpg');?>
 				<div class="caption very_big_colour lfl stl uppercase"  
 											 data-x="18" 
 											 data-y="293" 
@@ -157,47 +132,62 @@
 			</li>
 			
 			<!-- THE SECOND SLIDE -->
-			<li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300" data-delay="6000" data-thumb="files/images/thumbs/thumb5.jpg"> <img src="files/images/slides/slide2.jpg" >
+			<li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300" data-delay="6000" data-thumb="files/images/thumbs/thumb5.jpg">
+				<?php  echo $this->Html->image('/images/slides/slide2.jpg', array('alt' => 'slide2')); ?>
+
 				<div class="caption large_text lft ltb"  
 										 data-x="0" 
 										 data-y="100" 
 										 data-speed="800" 
 										 data-start="1000" 
-										 data-easing="easeOutExpo"  ><img src="files/images/slides/man_1.png" alt="Image 5"></div>
+										 data-easing="easeOutExpo"  >
+											<?php  echo $this->Html->image('/images/slides/man_1.png', array('alt' => 'Image 5'));?>
+				</div>
 				<div class="caption large_text lft ltb"  
 										 data-x="350" 
 										 data-y="100" 
 										 data-speed="1000" 
 										 data-start="1500" 
-										 data-easing="easeOutExpo"  ><img src="files/images/slides/man_2.png" alt="Image 5"></div>
+										 data-easing="easeOutExpo"  >
+										 	<?php  echo $this->Html->image('/images/slides/man_2.png', array('alt' => 'Image 5'));?>
+				</div>
 				<div class="caption large_text lft ltb"  
 										 data-x="700" 
 										 data-y="100" 
 										 data-speed="1200" 
 										 data-start="2000" 
-										 data-easing="easeOutExpo"  ><img src="files/images/slides/man_3.png" alt="Image 5"></div>
+										 data-easing="easeOutExpo"  >
+											<?php  echo $this->Html->image('/images/slides/man_3.png', array('alt' => 'Image 5'));?>
+				</div>
 			</li>
 			
 			<!-- THE THIRD SLIDE -->
-			<li data-transition="cube" data-slotamount="10" data-masterspeed="300" data-delay="8000" data-thumb="files/images/thumbs/thumb5.jpg"> <img src="files/images/slides/slide3.jpg" >
+			<li data-transition="cube" data-slotamount="10" data-masterspeed="300" data-delay="8000" data-thumb="files/images/thumbs/thumb5.jpg">
+				<?php  echo $this->Html->image('/images/slides/slide3.jpg', array('alt' => 'Image 5'));?>
 				<div class="caption lfl ltl"  
 										 data-x="-60" 
 										 data-y="160" 
 										 data-speed="1200" 
 										 data-start="1500" 
-										 data-easing="easeOutExpo" data-end="7300" data-endspeed="300" data-endeasing="easeInSine" ><img src="files/images/slides/mbpro.png" alt="Image 4"></div>
+										 data-easing="easeOutExpo" data-end="7300" data-endspeed="300" data-endeasing="easeInSine" >
+										<?php  echo $this->Html->image('/images/slides/mbpro.png', array('alt' => 'Image 4'));?>
+				</div>	
 				<div class="caption lfl ltl"  
 										 data-x="320" 
 										 data-y="240" 
 										 data-speed="1200" 
 										 data-start="1800" 
-										 data-easing="easeOutExpo" data-end="7400" data-endspeed="300" data-endeasing="easeInSine" ><img src="files/images/slides/ipad_front_view.png" alt="Image 5"></div>
+										 data-easing="easeOutExpo" data-end="7400" data-endspeed="300" data-endeasing="easeInSine" >
+									 	<?php  echo $this->Html->image('/images/slides/ipad_front_view.png', array('alt' => 'Image 5'));?>
+				</div>
 				<div class="caption lfl ltl"  
 										 data-x="250" 
 										 data-y="320" 
 										 data-speed="1200" 
 										 data-start="2100" 
-										 data-easing="easeOutExpo" data-end="7600" data-endspeed="300" data-endeasing="easeInSine" ><img src="files/images/slides/iphone_front_view.png" alt="Image 6"></div>        
+										 data-easing="easeOutExpo" data-end="7600" data-endspeed="300" data-endeasing="easeInSine" >
+									 	<?php  echo $this->Html->image('/images/slides/iphone_front_view.png', array('alt' => 'Image 6'));?>
+				</div>
 				<div class="caption very_big_colour sft str uppercase"  
 											 data-x="600" 
 											 data-y="293" 
@@ -213,7 +203,8 @@
 			</li>
 			
 			<!-- THE FOURTH SLIDE -->
-			<li data-transition="slidehorizontal" data-slotamount="7" data-masterspeed="300" data-delay="9000" data-thumb="images/thumbs/thumb4.jpg"><img src="files/images/slides/slide4.jpg" >
+			<li data-transition="slidehorizontal" data-slotamount="7" data-masterspeed="300" data-delay="9000" data-thumb="images/thumbs/thumb4.jpg">
+				<?php  echo $this->Html->image('/images/slides/slide4.jpg');?>
 				<div class="caption fade lfl stl" data-autoplay="false" data-x="380" data-y="180" data-speed="500" data-start="10" data-easing="easeOutBack">
 					<!-- <iframe src="http://player.vimeo.com/video/21419714?title=0&amp;byline=0&amp;portrait=0;api=1" width="550" height="309"></iframe> -->
 				</div>
@@ -245,123 +236,83 @@
 <div class="container big-icon-block">
 	<div class="row"> 
 		<!-- BIG ICON BLOCK -->
-		<div class="four columns icon-block-content"> <a href="full_width.html"><img src="files/images/icon_box_1.png" alt="" /></a>
+		<div class="four columns icon-block-content">
+			<?php echo $this->Html->link($this->Html->image('/images/icon_box_1.png'), 'full_width.html', array('escape' => false));?>			
 			<h3> Lorem ipsum dolor sit </h3>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.</p>
-			<a class="button" href="#">Read more +</a> </div>
-		<div class="four columns icon-block-content"> <a href="full_width.html"><img src="files/images/icon_box_2.png" alt="" /></a>
+			<?php echo $this->Html->link('Read more +', 'javascript:void(0);', array('calss' => 'button'));?>
+		</div>
+		<div class="four columns icon-block-content">
+			<?php echo $this->Html->link($this->Html->image('/images/icon_box_2.png'), 'full_width.html', array('escape' => false));?>			
 			<h3> Lorem ipsum dolor sit </h3>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.</p>
-			<a class="button" href="#">Read more +</a> </div>
-		<div class="four columns icon-block-content"> <a href="full_width.html"><img src="files/images/icon_box_3.png" alt="" /></a>
+			<?php echo $this->Html->link('Read more +', 'javascript:void(0);', array('calss' => 'button'));?>
+		</div>
+		<div class="four columns icon-block-content">
+			<?php echo $this->Html->link($this->Html->image('/images/icon_box_3.png'), 'full_width.html', array('escape' => false));?>			
 			<h3> Lorem ipsum dolor sit </h3>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum. </p>
-			<a class="button" href="#">Read more +</a> </div>
+			<?php echo $this->Html->link('Read more +', 'javascript:void(0);', array('calss' => 'button'));?>
 	</div>
 	<!-- END BIG ICON BLOCK --> 
 </div>
 
-<!-- CIRCLES BLOCK -->
-<!-- <div class="container circles_block">
-	<div class="row">
-		<ul class="ch-grid">
-			<li>
-				<div class="ch-item ch-img-1">
-					<div class="ch-info-wrap">
-						<div class="ch-info">
-							<div class="ch-info-front ch-img-1"></div>
-							<div class="ch-info-back">
-								<h3>We Are Fun</h3>
-								<p>Donec id elit non mi porta gravida at eget <a href="#">Read More +</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="ch-item ch-img-2">
-					<div class="ch-info-wrap">
-						<div class="ch-info">
-							<div class="ch-info-front ch-img-2"></div>
-							<div class="ch-info-back">
-								<h3>We Have Passion</h3>
-								<p>Donec id elit non mi porta gravida at eget <a href="#">Read More +</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="ch-item ch-img-3">
-					<div class="ch-info-wrap">
-						<div class="ch-info">
-							<div class="ch-info-front ch-img-3"></div>
-							<div class="ch-info-back">
-								<h3>We Work Hard</h3>
-								<p>Donec id elit non mi porta gravida at eget <a href='#'>Read More +</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="ch-item ch-img-4">
-					<div class="ch-info-wrap">
-						<div class="ch-info">
-							<div class="ch-info-front ch-img-4"></div>
-							<div class="ch-info-back">
-								<h3>We Are Proteus</h3>
-								<p>Donec id elit non mi porta gravida at eget <a href="#">Read More +</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
-</div> -->
-<!-- END CIRCLES BLOCK --> 
-
 <!-- SMALL ICON BLOCK -->
 <div class="container small-icon-block">
 	<div class="row">
-		<div class="three columns"> <img src="files/images/small_icon_1.png" alt="" />
+		<div class="three columns">
+			<!-- <img src="files/images/small_icon_1.png" alt="" /> -->
+			<?php echo $this->Html->image('/images/small_icon_1.png');?>
 			<h5>Responsive Design</h5>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 				tellus ac cursus.</p>
 		</div>
-		<div class="three columns"> <img src="files/images/small_icon_2.png" alt="" />
+		<div class="three columns">
+			<?php echo $this->Html->image('/images/small_icon_2.png');?>
+			<!-- <img src="files/images/small_icon_2.png" alt="" /> -->
 			<h5>Unlimited Colours</h5>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 				tellus ac cursus.</p>
 		</div>
-		<div class="three columns"> <img src="files/images/small_icon_3.png" alt="" />
+		<div class="three columns">
+			<?php echo $this->Html->image('/images/small_icon_3.png');?>
+			<!-- <img src="files/images/small_icon_3.png" alt="" /> -->
 			<h5>Awsome Slider</h5>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 				tellus ac cursus.</p>
 		</div>
-		<div class="three columns"> <img src="files/images/small_icon_4.png" alt="" />
+		<div class="three columns">
+			<?php echo $this->Html->image('/images/small_icon_4.png');?>
+			<!-- <img src="files/images/small_icon_4.png" alt="" /> -->
 			<h5>Well Documented</h5>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 				tellus ac cursus.</p>
 		</div>
 		<div class="clear"></div>
-		<div class="three columns"> <img src="files/images/small_icon_5.png" alt="" />
+		<div class="three columns">
+			<?php echo $this->Html->image('/images/small_icon_5.png');?>
+			<!-- <img src="files/images/small_icon_5.png" alt="" /> -->
 			<h5>Great Support</h5>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 				tellus ac cursus.</p>
 		</div>
-		<div class="three columns"> <img src="files/images/small_icon_6.png" alt="" />
+		<div class="three columns">
+			<?php echo $this->Html->image('/images/small_icon_6.png');?>
+			<!-- <img src="files/images/small_icon_6.png" alt="" /> -->
 			<h5>Working Contact Form</h5>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 				tellus ac cursus.</p>
 		</div>
-		<div class="three columns"> <img src="files/images/small_icon_7.png" alt="" />
+		<div class="three columns">
+			<?php echo $this->Html->image('/images/small_icon_7.png');?>
+			<!-- <img src="files/images/small_icon_7.png" alt="" /> -->
 			<h5>Custom Shortcodes</h5>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 				tellus ac cursus.</p>
 		</div>
-		<div class="three columns"> <img src="files/images/small_icon_8.png" alt="" />
+		<div class="three columns">
+			<?php echo $this->Html->image('/images/small_icon_8.png');?>
+			<!-- <img src="files/images/small_icon_8.png" alt="" /> -->
 			<h5>PSD Files Included</h5>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 				tellus ac cursus.</p>
@@ -374,59 +325,7 @@
 		<hr/>
 	</div>
 </div>
-<!-- PORTFOLIO BLOCK -->
-<div class="container portfolio-block">
-	<div class="row">
-		<div id="container" class="clickable variable-sizes clearfix">
-			<h1>Latest Work</h1>
-			<!-- Portfolio Item -->
-			<div class="three columns">
-				<div class="portfolio-item">
-					<div class="portfolio-item-image image-overlay"> <a class="titan-lb" data-titan-group="gallery" href="files/images/portfolio/large_1.jpg" title="Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus."><img src="files/images/portfolio/1.jpg" alt="" /> <span class="overlay-icon item-zoom"></span> </a> </div>
-					<div class="portfolio-item-content">
-						<h5 class="title"><a href="portfolio_single.html">Lorem ipsum dolor sit</a></h5>
-						<p>Class aptent taciti</p>
-					</div>
-				</div>
-			</div>
-			<!-- End Portfolio Item --> 
-			<!-- Portfolio Item -->
-			<div class="three columns">
-				<div class="portfolio-item">
-					<div class="portfolio-item-image image-overlay"> <a class="titan-lb" data-titan-group="gallery" href="files/images/portfolio/large_2.jpg" title="Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus."><img src="files/images/portfolio/2.jpg" alt="" /> <span class="overlay-icon item-zoom"></span> </a> </div>
-					<div class="portfolio-item-content">
-						<h5 class="title"><a href="portfolio_single.html">Lorem ipsum dolor sit</a></h5>
-						<p>Class aptent taciti</p>
-					</div>
-				</div>
-			</div>
-			<!-- End Portfolio Item --> 
-			<!-- Portfolio Item -->
-			<div class="three columns">
-				<div class="portfolio-item">
-					<div class="portfolio-item-image image-overlay"> <a class="titan-lb" data-titan-group="gallery" href="files/images/portfolio/large_3.jpg" title="Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus."><img src="files/images/portfolio/3.jpg" alt="" /> <span class="overlay-icon item-zoom"></span> </a> </div>
-					<div class="portfolio-item-content">
-						<h5 class="title"><a href="portfolio_single.html">Lorem ipsum dolor sit</a></h5>
-						<p>Class aptent taciti</p>
-					</div>
-				</div>
-			</div>
-			<!-- End Portfolio Item --> 
-			<!-- Portfolio Item -->
-			<div class="three columns">
-				<div class="portfolio-item">
-					<div class="portfolio-item-image image-overlay"> <a class="titan-lb" data-titan-group="gallery" href="files/images/portfolio/large_4.jpg" title="Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus."><img src="files/images/portfolio/4.jpg" alt="" /> <span class="overlay-icon item-zoom"></span> </a> </div>
-					<div class="portfolio-item-content">
-						<h5 class="title"><a href="portfolio_single.html">Lorem ipsum dolor sit</a></h5>
-						<p>Class aptent taciti</p>
-					</div>
-				</div>
-			</div>
-			<!-- End Portfolio Item --> 
-		</div>
-	</div>
-</div>
-<!-- END PORTFOLIO BLOCK -->
+
 <div class="row">
 	<div class="twelve columns">
 		<hr/>
@@ -437,7 +336,8 @@
 	<div class="row">
 		<div class="four columns">
 			<h1>About Us</h1>
-			<img src="files/images/about_us.jpg" alt="" />
+			<?php echo $this->Html->image('/images/about_us.jpg', array('alt' => '')); ?>
+			<!-- <img src="files/images/about_us.jpg" alt="" /> -->
 			<p class="entry-text">Consectetur adipiscing elit aeneane lorem lipsum, condimentum 
 				ultrices consequat eu, vehicula mauris lipsum adipiscing lipsum.<br>
 			</p>
@@ -481,31 +381,31 @@
 			<h1>Services</h1>
 			<!-- ACCORDION -->
 			<div id="accordion-style-1">
-				<div class="acc-item first"> <a href="#" class="acc_trigger">Proin tempor neque mi</a>
+				<div class="acc-item first"> <a href="javascript:void(0);" class="acc_trigger">Proin tempor neque mi</a>
 					<div class="acc_container">
 						<p>Mauris laoreet arcu tortor. Fusce neque felis, bibendum vel lacinia et, eleifend ut tortor. Sed imperdiet, purus porttitor vestibulum lobortis, lorem nunc adipiscing ipsum, at ullamcorper sem odio a tellus. Mauris a luctus nunc.</p>
 						<p>Maecenas at nisl leo. Sed sed nisl a ligula eleifend posuere ut nec sapien. Proin tempor neque mi. Duis pretium dignissim elit nec feugiat. Morbi non orci felis. Nam vitae metus a orci iaculis facilisis.</p>
 					</div>
 				</div>
-				<div class="acc-item"> <a href="#" class="acc_trigger">Donec id elit non mi porta</a>
+				<div class="acc-item"> <a href="javascript:void(0);" class="acc_trigger">Donec id elit non mi porta</a>
 					<div class="acc_container">
 						<p>Mauris laoreet arcu tortor. Fusce neque felis, bibendum vel lacinia et, eleifend ut tortor. Sed imperdiet, purus porttitor vestibulum lobortis, lorem nunc adipiscing ipsum, at ullamcorper sem odio a tellus. Mauris a luctus nunc.</p>
 						<p>Maecenas at nisl leo. Sed sed nisl a ligula eleifend posuere ut nec sapien. Proin tempor neque mi. Duis pretium dignissim elit nec feugiat. Morbi non orci felis. Nam vitae metus a orci iaculis facilisis.</p>
 					</div>
 				</div>
-				<div class="acc-item"> <a href="#" class="acc_trigger">Fusce dapibus, tellus ac cursus</a>
+				<div class="acc-item"> <a href="javascript:void(0);" class="acc_trigger">Fusce dapibus, tellus ac cursus</a>
 					<div class="acc_container">
 						<p>Mauris laoreet arcu tortor. Fusce neque felis, bibendum vel lacinia et, eleifend ut tortor. Sed imperdiet, purus porttitor vestibulum lobortis, lorem nunc adipiscing ipsum, at ullamcorper sem odio a tellus. Mauris a luctus nunc.</p>
 						<p>Maecenas at nisl leo. Sed sed nisl a ligula eleifend posuere ut nec sapien. Proin tempor neque mi. Duis pretium dignissim elit nec feugiat. Morbi non orci felis. Nam vitae metus a orci iaculis facilisis.</p>
 					</div>
 				</div>
-				<div class="acc-item"> <a href="#" class="acc_trigger">Ligula eleifend posuere</a>
+				<div class="acc-item"> <a href="javascript:void(0);" class="acc_trigger">Ligula eleifend posuere</a>
 					<div class="acc_container">
 						<p>Mauris laoreet arcu tortor. Fusce neque felis, bibendum vel lacinia et, eleifend ut tortor. Sed imperdiet, purus porttitor vestibulum lobortis, lorem nunc adipiscing ipsum, at ullamcorper sem odio a tellus. Mauris a luctus nunc.</p>
 						<p>Maecenas at nisl leo. Sed sed nisl a ligula eleifend posuere ut nec sapien. Proin tempor neque mi. Duis pretium dignissim elit nec feugiat. Morbi non orci felis. Nam vitae metus a orci iaculis facilisis.</p>
 					</div>
 				</div>
-				<div class="acc-item"> <a href="#" class="acc_trigger">Pretium dignissim elit nec feugiat</a>
+				<div class="acc-item"> <a href="javascript:void(0);" class="acc_trigger">Pretium dignissim elit nec feugiat</a>
 					<div class="acc_container">
 						<p>Mauris laoreet arcu tortor. Fusce neque felis, bibendum vel lacinia et, eleifend ut tortor. Sed imperdiet, purus porttitor vestibulum lobortis, lorem nunc adipiscing ipsum, at ullamcorper sem odio a tellus. Mauris a luctus nunc.</p>
 						<p>Maecenas at nisl leo. Sed sed nisl a ligula eleifend posuere ut nec sapien. Proin tempor neque mi. Duis pretium dignissim elit nec feugiat. Morbi non orci felis. Nam vitae metus a orci iaculis facilisis.</p>
@@ -548,26 +448,39 @@
 		</div>
 		<div class="three columns">
 			<h5>Latest Posts</h5>
-			<p><a href="single_post.html"> <img class="img_float_left" src="files/images/thumb_1.jpg" width="40" height="40" alt=
-			"" /> <strong>Nullam dictum felis eu</strong></a><br />
-				Lorem ipsum dolor sit amet.</p>
-			<p><a href="single_post.html"> <img class="img_float_left" src="files/images/thumb_2.jpg" width="40" height="40" alt=
-			"" /> <strong>Nullam dictum felis eut</strong></a><br />
-				Lorem ipsum dolor sit amet.</p>
-			<p><a href="single_post.html"> <img class="img_float_left" src="files/images/thumb_3.jpg" width="40" height="40" alt=
-			"" /> <strong>Nullam dictum felis eu</strong></a><br />
-				Lorem ipsum dolor sit amet.</p>
+			<p>
+				<?php echo $this->Html->link($this->Html->image('/images/thumb_1.jpg', array('class' => 'img_float_left', 'width' => '40px', 'height' => '40px', 'alt' => '')),  'single_post.html', array('escape' => false));?>
+				<strong>Nullam dictum felis eu</strong>
+				<br />
+				Lorem ipsum dolor sit amet.
+			</p>
+			<p>
+				<?php echo $this->Html->link($this->Html->image('/images/thumb_2.jpg', array('class' => 'img_float_left', 'width' => '40px', 'height' => '40px', 'alt' => '')),  'single_post.html', array('escape' => false));?>
+				<strong>Nullam dictum felis eut</strong>
+				<br />
+				Lorem ipsum dolor sit amet.
+			</p>
+			<p>
+				<?php echo $this->Html->link($this->Html->image('/images/thumb_3.jpg', array('class' => 'img_float_left', 'width' => '40px', 'height' => '40px', 'alt' => '')),  'single_post.html', array('escape' => false));?>
+				<strong>Nullam dictum felis eu</strong>
+				<br />
+				Lorem ipsum dolor sit amet.
+			</p>
 		</div>
 		<div class="three columns">
 			<h5>Contact Us</h5>
-			<img class="img_float_left" src="files/images/footer_icon_1.png" alt="" />
+			<?php  echo $this->Html->image('/images/footer_icon_1.png', array('class' => 'img_float_left'));?>
 			<p> (+44) 773 339 9999 </p>
-			<img class="img_float_left" src="files/images/footer_icon_2.png" alt="" />
-			<p> <a href="mailto:youremailaddress">info@yourwebsite.com</a> </p>
-			<img src="files/images/footer_icon_3.png" alt="" class="img_float_left" />
+			<?php  echo $this->Html->image('/images/footer_icon_2.png', array('class' => 'img_float_left'));?>
+			<p>
+				<?php echo $this->Html->link('info@yourwebsite.com', 'mailto:youremailaddress');?>
+			</p>
+			<?php  echo $this->Html->image('/images/footer_icon_3.png', array('class' => 'img_float_left'));?>
 			<p class="tab"> <strong>Your Company LDT</strong><br />
-				Street nr 100<br />
-				London, NW1 2RG<br />
+				Street nr 100
+				<br />
+				London, NW1 2RG
+				<br />
 				UK </p>
 		</div>
 	</div>
@@ -580,7 +493,7 @@
 			<p> &#169; Copyright - Proteus - HTML Theme by creativusmouse.com </p>
 		</div>
 		<div class="six columns">
-			<div class="large-social-block"> <a href="#"><span class="social dribbble"></span></a> <a href="#"><span class="social flickr"></span></a> <a href="#"><span class="social linkedin"></span></a> <a href="#"><span class="social google"></span></a> <a href="#"><span class="social twitter"></span></a> <a href="#"><span class="social facebook"></span></a>
+			<div class="large-social-block"> <a href="javascript:void(0);"><span class="social dribbble"></span></a> <a href="javascript:void(0);"><span class="social flickr"></span></a> <a href="javascript:void(0);"><span class="social linkedin"></span></a> <a href="javascript:void(0);"><span class="social google"></span></a> <a href="javascript:void(0);"><span class="social twitter"></span></a> <a href="javascript:void(0);"><span class="social facebook"></span></a>
  </div>
 		</div>
 	</div>
@@ -624,21 +537,8 @@
 						});
 			});
 			</script> 
-<!-- <script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>  -->
 <?php
-	echo $this->Html->script(array('jquery.1.7.2', 'jquery.min', 'jquery.infieldlabel.min', 'scripts', 'app', 'prettify', 'jquery.titanlighbox', 'farbtastic', 'themes_panel'));
+	echo $this->Html->script(array('jquery.1.7.2', 'jquery.min', 'jquery.infieldlabel.min', 'scripts', 'app', '/titan/js/prettify', '/titan/js/jquery.titanlighbox', '/themes_panel/farbtastic/farbtastic', '/themes_panel/themes_panel'));
 ?>
-
-<!-- <script src="files/js/jquery.1.7.2.js"></script> -->
-<!-- <script src="files/js/jquery.min.js"></script>  -->
-<!-- <script src="files/js/jquery.infieldlabel.min.js"></script>  -->
-<!-- <script src="files/js/scripts.js"></script> -->
-<!-- <script src="files/js/app.js"></script>  -->
-
-<!-- Titan Lightbox --> 
-<!-- <script src="files/titan/js/prettify.js"></script>  -->
-<!-- <script src="files/titan/js/jquery.titanlighbox.js"></script> <!-- Themes Panel -->  -->
-<!-- <script src="files/themes_panel/farbtastic/farbtastic.js"></script>  -->
-<!-- <script src="files/themes_panel/themes_panel.js"></script> -->
 </body>
 </html>
