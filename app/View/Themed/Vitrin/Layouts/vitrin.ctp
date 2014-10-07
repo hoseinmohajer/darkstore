@@ -20,36 +20,6 @@
 </head>
 <body>
 
-<!-- THEMES PANEL -->
-<div id="themes_panel">
-	<div id="themes_menu">
-		<div class="segment">
-			<h6>Theme Colour</h6>
-			<ul class="theme buttons">
-				<?php 
-					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_purple.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
-					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_pink.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
-					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_blue.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
-					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_green.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
-					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_orange.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
-					echo "<li>" . $this->Html->link($this->Html->image('/themes_panel/buttons/theme_red.jpg'), 'javascript:void(0);', array('escape' => false)) . "</li>";
-				?>
-			</ul>
-		</div>
-		<div class="segment"> Background
-			<div class="pick_color"> <a class="pick_color_btn">
-				<form>
-					<input type="text" id="color" name="color" readonly value="#ccc" />
-				</form>
-				</a> </div>
-		</div>
-		<div class="segment noborder"> <a class="reset_btn" href="javascript:void(0);">Reset</a> </div>
-	</div>
-	<div id="toggle_button"><a href="javascript:void(0);"></a></div>
-	<div id="colorpicker"></div>
-</div>
-<!-- END THEMES PANEL --> 
-
 <!-- HEADER -->
 <div id="header">
 	<div class="row">
@@ -115,7 +85,7 @@
 	<div class="fullwidthbanner">
 		<ul>
 			<!-- THE FIRST SLIDE -->
-			<li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-delay="9400" data-thumb="files/images/thumbs/thumb2.jpg">
+			<li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-delay="9400" data-thumb="/theme/Vitrin/images/thumbs/thumb2.jpg">
 				<?php  echo $this->Html->image('/images/slides/slide1.jpg');?>
 				<div class="caption very_big_colour lfl stl uppercase"  
 											 data-x="18" 
@@ -132,7 +102,7 @@
 			</li>
 			
 			<!-- THE SECOND SLIDE -->
-			<li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300" data-delay="6000" data-thumb="files/images/thumbs/thumb5.jpg">
+			<li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300" data-delay="6000" data-thumb="/theme/Vitrin/images/thumbs/thumb5.jpg">
 				<?php  echo $this->Html->image('/images/slides/slide2.jpg', array('alt' => 'slide2')); ?>
 
 				<div class="caption large_text lft ltb"  
@@ -162,7 +132,7 @@
 			</li>
 			
 			<!-- THE THIRD SLIDE -->
-			<li data-transition="cube" data-slotamount="10" data-masterspeed="300" data-delay="8000" data-thumb="files/images/thumbs/thumb5.jpg">
+			<li data-transition="cube" data-slotamount="10" data-masterspeed="300" data-delay="8000" data-thumb="/theme/Vitrin/images/thumbs/thumb5.jpg">
 				<?php  echo $this->Html->image('/images/slides/slide3.jpg', array('alt' => 'Image 5'));?>
 				<div class="caption lfl ltl"  
 										 data-x="-60" 
@@ -203,10 +173,9 @@
 			</li>
 			
 			<!-- THE FOURTH SLIDE -->
-			<li data-transition="slidehorizontal" data-slotamount="7" data-masterspeed="300" data-delay="9000" data-thumb="images/thumbs/thumb4.jpg">
+			<li data-transition="slidehorizontal" data-slotamount="7" data-masterspeed="300" data-delay="9000" data-thumb="/theme/Vitrin/images/thumbs/thumb4.jpg">
 				<?php  echo $this->Html->image('/images/slides/slide4.jpg');?>
 				<div class="caption fade lfl stl" data-autoplay="false" data-x="380" data-y="180" data-speed="500" data-start="10" data-easing="easeOutBack">
-					<!-- <iframe src="http://player.vimeo.com/video/21419714?title=0&amp;byline=0&amp;portrait=0;api=1" width="550" height="309"></iframe> -->
 				</div>
 				<div class="caption very_big_colour lfl uppercase"  
 											 data-x="18" 
@@ -499,46 +468,8 @@
 	</div>
 </div>
 <!-- END SUBFOOTER --> 
-
-<!-- JAVASCRIPT --> 
-<script type="text/javascript">// Slider JS
-				var tpj=jQuery;
-				tpj(document).ready(function() {
-				if (tpj.fn.cssOriginal!=undefined)
-					tpj.fn.css = tpj.fn.cssOriginal;
-					tpj('.fullwidthbanner').revolution(
-						{
-							delay:9000,
-							startwidth:960,
-							startheight:500,
-
-							onHoverStop:"on",						// Stop Banner Timet at Hover on Slide on/off
-
-							thumbWidth:100,							// Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
-							thumbHeight:50,
-							thumbAmount:3,
-
-							hideThumbs:200,
-							navigationType:"none",					//bullet, thumb, none, both	 (No Shadow in Fullwidth Version !)
-							navigationArrows:"verticalcentered",		//nexttobullets, verticalcentered, none
-							navigationStyle:"round",				//round,square,navbar
-
-							touchenabled:"on",						// Enable Swipe Function : on/off
-							navOffsetHorizontal:0,
-							navOffsetVertical:20,
-							stopAtSlide:-1,							// Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
-							stopAfterLoops:-1,						// Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
-
-							hideCaptionAtLimit:0,					// It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
-							hideAllCaptionAtLilmit:0,				// Hide all The Captions if Width of Browser is less then this value
-							hideSliderAtLimit:0,					// Hide the whole slider, and stop also functions if Width of Browser is less than this value
-							fullWidth:"on",
-							shadow:0								//0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
-						});
-			});
-			</script> 
 <?php
-	echo $this->Html->script(array('jquery.1.7.2', 'jquery.min', 'jquery.infieldlabel.min', 'scripts', 'app', '/titan/js/prettify', '/titan/js/jquery.titanlighbox', '/themes_panel/farbtastic/farbtastic', '/themes_panel/themes_panel'));
+	echo $this->Html->script(array('jquery.1.7.2', 'jquery.min', 'jquery.infieldlabel.min', 'scripts', 'app', '/titan/js/prettify', '/titan/js/jquery.titanlighbox', /*'/themes_panel/farbtastic/farbtastic', '/themes_panel/themes_panel',*/ '/slideshow/slideshow', '/slideshow/slideshowdataloader'));
 ?>
 </body>
 </html>
