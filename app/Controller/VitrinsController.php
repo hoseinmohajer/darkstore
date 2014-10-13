@@ -5,9 +5,11 @@ class VitrinsController extends AppController{
 	// 	parent::beforeFilter();
 	// }
 
+	public $helpers = array('Html', 'Form', 'Session', 'Vitrins');
+
 	public function index(){
 		$this->layout = 'vitrin';
-		$this->set('title_for_layout', 'Index');
+		$this->set('title_for_layout', 'Welcom');
 		
 	}
 }
