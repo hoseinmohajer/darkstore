@@ -27,5 +27,8 @@
 	echo $this->Html->script(array('cycle'));
 	echo $this->Html->script(array('jquery.tablesorter.min'));
 ?>
+	<div style="color:#ff0000;direction:ltr;backgrount-color:#fff !important;float:left;">
+		<?php echo $this->element('sql_dump'); ?>
+	</div>
 </body>
 </html>
