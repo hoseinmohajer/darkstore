@@ -1,8 +1,5 @@
 $(document).ready(function() {
-	
-	
-	
-	
+
 	// Adds title attributes and classnames to list items	 
 	$("ul li a:contains('Dashboard')").addClass("dashboard").attr('title', 'Dashboard');
 	$("ul li a:contains('Pages')").addClass("pages").attr('title', 'Pages');
@@ -203,8 +200,6 @@ $(document).ready(function() {
 	            $('nav').removeClass('fixed').css('top','0')
 	        }
 	    });
-	 }
-	 });
-    
-    	
+	}
+	});	
 });

@@ -19,6 +19,7 @@
 			<a href="javascript:void(0);"><span class="icon">&#128196;</span> Pages</a>
 			<ul class="submenu">
 				<li><a href="javascript:void(0);">Create page</a></li>
+				<li><a href="javascript:void(0);" id="mainSlideshowForm">Main Slideshow content</a></li>
 				<li><a href="javascript:void(0);">View pages</a></li>
 			</ul>	
 		</li>
@@ -51,7 +52,7 @@
 	
 <section class="content">
 	<div class="widget-container">
-		
+		<?php echo $this->Admins->slideshowform(); ?>
 	</div>
 	
 	<div class="widget-container">

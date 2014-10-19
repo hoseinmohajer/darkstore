@@ -74,3 +74,6 @@ p.error,
 .buttons{
 	top: 30px !important;
 }
+.hide-widget{
+	display: none;
+}
