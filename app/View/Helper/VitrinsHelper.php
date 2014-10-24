@@ -144,7 +144,7 @@
 							  <li data-transition="slidehorizontal" data-slotamount="7" data-masterspeed="300" data-delay="9000" data-thumb="images/thumbs/thumb4.jpg">
 							  ' . $this->Html->image('/images/slides/slide4.jpg', array('alt' => 'DarkStore')) . '
 								<div class="caption fade lfl stl" data-autoplay="false" data-x="380" data-y="180" data-speed="500" data-start="10" data-easing="easeOutBack">
-									<iframe src="" width="550" height="309"></iframe>
+									' . $this->Html->image('/images/slides/mbpro.png', array('alt' => 'DarkStore')) . '
 								</div>
 								<div class="caption very_big_colour lfl uppercase"  
 																	 data-x="18" 
