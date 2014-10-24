@@ -1,3 +1,4 @@
 $("#mainSlideshowForm").click(function (){
-	dashboard.showForm(".main-slideshow-content-form");
+	$("#flash_custom").hide();
+	$(".main-slideshow-content-form").show();
 });

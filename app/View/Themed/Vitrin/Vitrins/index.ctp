@@ -1,6 +1,5 @@
 <?php echo $this->Vitrins->topmenu('home');?>
-<?php echo $this->Vitrins->slideshow();?>
-
+<?php echo $this->Vitrins->slideshow($slideshowData);?>
 <div class="container big-icon-block">
 	<div class="row"> 
 		

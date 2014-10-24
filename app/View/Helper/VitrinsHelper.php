@@ -45,12 +45,30 @@
 						" . $this->Html->Link('DarkStore', array('action' => 'index'), array('id' => 'logo', 'title' => 'DarkStore')) . "
 					</div>";
 		}
-		public function slideshow() {
-			echo '<div class="fullwidthbanner-container">
-					<div class="fullwidthbanner">
-						<ul>
-							<li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-delay="9400">
-								' . $this->Html->image('/images/slides/slide1.jpg', array('alt' => 'DarkStore')) . '
+		public function slideshow($slideshowData) {
+			$slideshowContentType1 = '';
+			$slideshowContentType2 = '';
+			$slideshowContentType3 = '';
+			$slideshowContentType4 = '';
+			foreach ($slideshowData as $key => $value) {
+				foreach ($slideshowData[$key] as $key => $value) {
+					switch ($value['type']) {
+						case '1':
+							foreach ($value as $key => $value) {
+								switch ($key) {
+									case 'backgroundimage':
+										$backgroundimageAddress = "/files/mainslideshow/background/".$value ;
+										break;
+									case 'title':
+										$title = $value;
+										break;
+									case 'subtitle':
+										$subtitle = $value;
+										break;
+								}
+							}
+							$slideshowContentType1 .= '<li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-delay="9400">
+								' . $this->Html->image($backgroundimageAddress, array('alt' => 'DarkStore')) . '
 								<div class="caption very_big_colour lfl stl uppercase"  
 																	data-x="18" 
 																	data-y="293" 
@@ -59,7 +77,7 @@
 																	data-easing="easeOutExpo"
 																	data-end="8800"
 																	data-endspeed="300"
-																	data-endeasing="easeInSine" >Vestibulum posuere placerat metus</div>
+																	data-endeasing="easeInSine" >' . $title . '</div>
 								<div class="caption very_big_black lfl stl uppercase"  
 																	data-x="18" 
 																	data-y="333" 
@@ -68,18 +86,35 @@
 																	data-easing="easeOutExpo"
 																	data-end="9100"
 																	data-endspeed="300"
-																	data-endeasing="easeInSine" >Nec porttitor nisl tempus et</div>
-							</li>
-							<!-- THE SECOND SLIDE -->
-							<li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300" data-delay="6000" data-thumb="files/images/thumbs/thumb5.jpg">
-							' . $this->Html->image('/images/slides/slide2.jpg', array('alt' => 'DarkStore')) . '
+																	data-endeasing="easeInSine" >' . $subtitle . '</div>
+							</li>';
+							break;
+						case '2':
+							foreach ($value as $key => $value) {
+								switch ($key) {
+									case 'backgroundimage':
+										$backgroundimageAddress = "/files/mainslideshow/background/".$value ;
+										break;
+									case 'insideimage1':
+										$insideimage1 = "/files/mainslideshow/insideimage/".$value ;
+										break;
+									case 'insideimage2':
+										$insideimage2 = "/files/mainslideshow/insideimage/".$value ;
+										break;
+									case 'insideimage3':
+										$insideimage3 = "/files/mainslideshow/insideimage/".$value ;
+										break;
+								}
+							}
+							$slideshowContentType2 .= '<li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300" data-delay="6000" data-thumb="files/images/thumbs/thumb5.jpg">
+							' . $this->Html->image($backgroundimageAddress, array('alt' => 'DarkStore')) . '
 								<div class="caption large_text lft ltb"  
 																 data-x="0" 
 																 data-y="100" 
 																 data-speed="800" 
 																 data-start="1000" 
 																 data-easing="easeOutExpo"  >
-																' . $this->Html->image('/images/slides/man_1.png', array('alt' => 'DarkStore')) . '
+																' . $this->Html->image($insideimage1, array('alt' => 'DarkStore', 'width' => '244px', 'height' => '478px')) . '
 																</div> 	
 								<div class="caption large_text lft ltb"  
 																 data-x="350" 
@@ -87,7 +122,7 @@
 																 data-speed="1000" 
 																 data-start="1500" 
 																 data-easing="easeOutExpo"  >
-																 ' . $this->Html->image('/images/slides/man_2.png', array('alt' => 'DarkStore')) . '
+																 ' . $this->Html->image($insideimage2, array('alt' => 'DarkStore', 'width' => '305px', 'height' => '460px')) . '
 																 </div>
 								<div class="caption large_text lft ltb"  
 																 data-x="700" 
@@ -95,20 +130,42 @@
 																 data-speed="1200" 
 																 data-start="2000" 
 																 data-easing="easeOutExpo"  >
-																 ' . $this->Html->image('/images/slides/man_3.png', array('alt' => 'DarkStore')) . '
+																 ' . $this->Html->image($insideimage3, array('alt' => 'DarkStore', 'width' => '244px', 'height' => '478px')) . '
 																 </div>
-							</li>
-							  
-							<!-- THE THIRD SLIDE -->
-							<li data-transition="cube" data-slotamount="10" data-masterspeed="300" data-delay="8000" data-thumb="files/images/thumbs/thumb5.jpg">
-							' . $this->Html->image('/images/slides/slide3.jpg', array('alt' => 'DarkStore')) . '
+							</li>';
+							break;
+						case '3':
+							foreach ($value as $key => $value) {
+								switch ($key) {
+									case 'backgroundimage':
+										$backgroundimageAddress = "/files/mainslideshow/background/".$value ;
+										break;
+									case 'insideimage1':
+										$insideimage1 = "/files/mainslideshow/insideimage/".$value ;
+										break;
+									case 'insideimage2':
+										$insideimage2 = "/files/mainslideshow/insideimage/".$value ;
+										break;
+									case 'insideimage3':
+										$insideimage3 = "/files/mainslideshow/insideimage/".$value ;
+										break;
+									case 'title':
+										$title = $value;
+										break;
+									case 'subtitle':
+										$subtitle = $value;
+										break;
+								}
+							}
+							$slideshowContentType3 .= '<li data-transition="cube" data-slotamount="10" data-masterspeed="300" data-delay="8000" data-thumb="files/images/thumbs/thumb5.jpg">
+							' . $this->Html->image($backgroundimageAddress, array('alt' => 'DarkStore')) . '
 								<div class="caption lfl ltl"  
 																 data-x="-60" 
 																 data-y="160" 
 																 data-speed="1200" 
 																 data-start="1500" 
 																 data-easing="easeOutExpo" data-end="7300" data-endspeed="300" data-endeasing="easeInSine" >
-																 ' . $this->Html->image('/images/slides/mbpro.png', array('alt' => 'DarkStore')) . '
+																 ' . $this->Html->image($insideimage1, array('alt' => 'DarkStore', 'width' => '570px', 'height' => '337px')) . '
 																 </div>
 								<div class="caption lfl ltl"  
 																 data-x="320" 
@@ -116,7 +173,7 @@
 																 data-speed="1200" 
 																 data-start="1800" 
 																 data-easing="easeOutExpo" data-end="7400" data-endspeed="300" data-endeasing="easeInSine" >
-																 ' . $this->Html->image('/images/slides/ipad_front_view.png', array('alt' => 'DarkStore')) . '
+																 ' . $this->Html->image($insideimage2, array('alt' => 'DarkStore', 'width' => '260px', 'height' => '317px')) . '
 																 </div>
 								<div class="caption lfl ltl"  
 																 data-x="250" 
@@ -124,50 +181,79 @@
 																 data-speed="1200" 
 																 data-start="2100" 
 																 data-easing="easeOutExpo" data-end="7600" data-endspeed="300" data-endeasing="easeInSine" >
-																 ' . $this->Html->image('/images/slides/ipad_front_view.png', array('alt' => 'DarkStore')) . '
+																 ' . $this->Html->image($insideimage3, array('alt' => 'DarkStore', 'width' => '135px', 'height' => '241px')) . '
 																</div>        
 								<div class="caption very_big_colour sft str uppercase"  
 																	 data-x="600" 
 																	 data-y="293" 
 																	 data-speed="300" 
 																	 data-start="3000" 
-																	 data-easing="easeOutExpo" data-end="7600" data-endspeed="300" data-endeasing="easeInSine" >Responsive Design</div>
+																	 data-easing="easeOutExpo" data-end="7600" data-endspeed="300" data-endeasing="easeInSine" >' . $title . '</div>
 								<div class="caption very_big_black sfb str uppercase"  
 																	 data-x="600" 
 																	 data-y="333" 
 																	 data-speed="300" 
 																	 data-start="3000" 
-																	 data-easing="easeOutExpo" data-end="7600" data-endspeed="300" data-endeasing="easeInSine" >Nec porttitor nisl tempus et</div>
-							  </li>
-							  
-							  <!-- THE FOURTH SLIDE -->
-							  <li data-transition="slidehorizontal" data-slotamount="7" data-masterspeed="300" data-delay="9000" data-thumb="images/thumbs/thumb4.jpg">
-							  ' . $this->Html->image('/images/slides/slide4.jpg', array('alt' => 'DarkStore')) . '
+																	 data-easing="easeOutExpo" data-end="7600" data-endspeed="300" data-endeasing="easeInSine" >' . $subtitle . '</div>
+							  </li>';
+							break;
+						case '4':
+							foreach ($value as $key => $value) {
+								switch ($key) {
+									case 'backgroundimage':
+										$backgroundimageAddress = "/files/mainslideshow/background/".$value ;
+										break;
+									case 'insideimage1':
+										$insideimage1 = "/files/mainslideshow/insideimage/".$value ;
+										break;
+									case 'title':
+										$title = $value;
+										break;
+									case 'subtitle':
+										$subtitle = $value;
+										break;
+								}
+							}
+							 $slideshowContentType4 = '<li data-transition="slidehorizontal" data-slotamount="7" data-masterspeed="300" data-delay="9000" data-thumb="images/thumbs/thumb4.jpg">
+							  ' . $this->Html->image($backgroundimageAddress, array('alt' => 'DarkStore')) . '
 								<div class="caption fade lfl stl" data-autoplay="false" data-x="380" data-y="180" data-speed="500" data-start="10" data-easing="easeOutBack">
-									' . $this->Html->image('/images/slides/mbpro.png', array('alt' => 'DarkStore')) . '
+									' . $this->Html->image($insideimage1, array('alt' => 'DarkStore', 'width' => '570px', 'height' => '337px')) . '
 								</div>
 								<div class="caption very_big_colour lfl uppercase"  
 																	 data-x="18" 
 																	 data-y="293" 
 																	 data-speed="300" 
 																	 data-start="500" 
-																	 data-easing="easeOutExpo" data-endspeed="300" data-endeasing="easeInSine" >Video Support</div>
+																	 data-easing="easeOutExpo" data-endspeed="300" data-endeasing="easeInSine" >' . $title . '</div>
 								<div class="caption very_big_black lfl uppercase"  
 																	 data-x="18" 
 																	 data-y="333" 
 																	 data-speed="300" 
 																	 data-start="800" 
-																	 data-easing="easeOutExpo" data-endspeed="300" data-endeasing="easeInSine" >Play Vimeo Or</div>
-																	 <div class="caption very_big_black lfl uppercase"  
+																	 data-easing="easeOutExpo" data-endspeed="300" data-endeasing="easeInSine" >' . $subtitle . '</div>
+																	 <!-- <div class="caption very_big_black lfl uppercase"  
 																	 data-x="18" 
 																	 data-y="387" 
 																	 data-speed="300" 
 																	 data-start="1000" 
-																	 data-easing="easeOutExpo" data-endspeed="300" data-endeasing="easeInSine" >Youtube Videos</div>
-							  </li>
+																	 data-easing="easeOutExpo" data-endspeed="300" data-endeasing="easeInSine" >' . $title . ' : ' . $subtitle . '</div> -->
+							  </li>';
+							break;
+					}
+				}
+			}
+			echo '<div class="fullwidthbanner-container">
+					<div class="fullwidthbanner">
+						<ul>
+							' . $slideshowContentType1 . '
+							<!-- THE SECOND SLIDE -->
+							' . $slideshowContentType2 . '
+							<!-- THE THIRD SLIDE -->
+							' . $slideshowContentType3 . '
+							  <!-- THE FOURTH SLIDE -->
+							' . $slideshowContentType4 . '
 						</ul>
 					<div class="tp-bannertimer"></div>
-
 					</div>
 				</div>';
 		}

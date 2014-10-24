@@ -9,8 +9,15 @@ class VitrinsController extends AppController{
 
 	public function index(){
 		$this->layout = 'vitrin';
-		$this->set('title_for_layout', 'Welcom');
+		$this->set('title_for_layout', 'Home');
+		$this->_slideshow();
 		
+	}
+	function _slideshow(){
+		$this->loadModel("Slideshow");
+		if($this->Slideshow->find('all')){
+			$this->set('slideshowData', $this->Slideshow->find('all'));
+		}
 	}
 }
 

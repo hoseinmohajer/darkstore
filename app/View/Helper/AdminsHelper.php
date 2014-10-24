@@ -32,40 +32,44 @@
 							$this->Form->button("Slide4", array("class" => "blue", "id" => "slide4")).
 						'</div>
 						<fieldset id="slideshow1-submit-form">
-        				<legend>Slideshow Form (1)</legend>'.
-							$this->Form->create("slideshows", array("action" => "mainslideshow", "type" => "file")).
-							$this->Form->input("slideshows.backgroundimage", array("label" => "Background1", "type" => "file")).
-							$this->Form->input("slideshows.title11", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title")).
-							$this->Form->input("slideshows.subtitle12", array("label" => false, "style" => "direction:ltr", "placeholder" => "SubTitle")).
-							$this->Form->submit("Save", array("class" => "green", "type" => "submit", "escape" => true)).
+        				<legend>Slideshow (Type 1)</legend>'.
+							$this->Form->create("Slideshow", array("action" => "mainslideshow", "type" => "file")).
+							$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "1")).
+							$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
+							$this->Form->input("slideshows.title", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title", "maxLength"=>"33")).
+							$this->Form->input("slideshows.subtitle", array("label" => false, "style" => "direction:ltr", "placeholder" => "SubTitle", "maxLength"=>"28")).
+							$this->Form->end("Save", array("class" => "green", "type" => "submit", "escape" => true, 'formnovalidate' => false)).
 						'</fieldset>
 						<fieldset id="slideshow2-submit-form">
-						<legend>Slideshow Form (2)</legend>'.
-							$this->Form->create("slideshows", array("action" => "mainslideshow", "type" => "file")).
-							$this->Form->input("slideshows.backgroundimage", array("label" => "Background2", "type" => "file")).
-							$this->Form->input("slideshows.insideimage21", array("label" => "Inside Image1", "type" => "file")).
-							$this->Form->input("slideshows.insideimage22", array("label" => "Inside Image2", "type" => "file")).
-							$this->Form->input("slideshows.insideimage23", array("label" => "Inside Image3", "type" => "file")).
+						<legend>Slideshow (Type 2)</legend>'.
+							$this->Form->create("Slideshow", array("action" => "mainslideshow", "type" => "file")).
+							$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "2")).
+							$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
+							$this->Form->input("slideshows.insideimage1", array("label" => "Inside Image1", "type" => "file")).
+							$this->Form->input("slideshows.insideimage2", array("label" => "Inside Image2", "type" => "file")).
+							$this->Form->input("slideshows.insideimage3", array("label" => "Inside Image3", "type" => "file")).
 							$this->Form->end("Save", array("class" => "green", "type" => "submit", "escape" => true)).
 						'</fieldset>
 						<fieldset id="slideshow3-submit-form">
-						<legend>Slideshow Form (3)</legend>'.
-							$this->Form->create("slideshows", array("action" => "mainslideshow", "type" => "file")).
-							$this->Form->input("slideshows.backgroundimage", array("label" => "Background3", "type" => "file")).
-							$this->Form->input("slideshows.insideimage31", array("label" => "Inside Image1", "type" => "file")).
-							$this->Form->input("slideshows.insideimage32", array("label" => "Inside Image2", "type" => "file")).
-							$this->Form->input("slideshows.insideimage33", array("label" => "Inside Image3", "type" => "file")).
-							$this->Form->input("slideshows.title31", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title")).
-							$this->Form->input("slideshows.subtitle32", array("label" => false, "style" => "direction:ltr", "placeholder" => "SubTitle")).
+						<legend>Slideshow (Type 3)</legend>'.
+							$this->Form->create("Slideshow", array("action" => "mainslideshow", "type" => "file")).
+							$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "3")).
+							$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
+							$this->Form->input("slideshows.insideimage1", array("label" => "Inside Image1", "type" => "file")).
+							$this->Form->input("slideshows.insideimage2", array("label" => "Inside Image2", "type" => "file")).
+							$this->Form->input("slideshows.insideimage3", array("label" => "Inside Image3", "type" => "file")).
+							$this->Form->input("slideshows.title", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title", "maxLength"=>"33")).
+							$this->Form->input("slideshows.subtitle", array("label" => false, "style" => "direction:ltr", "placeholder" => "SubTitle", "maxLength"=>"28")).
 							$this->Form->end("Save", array("class" => "green", "type" => "submit", "escape" => true)).
 						'</fieldset>
 						<fieldset id="slideshow4-submit-form">
-						<legend>Slideshow Form (4)</legend>'.
-							$this->Form->create("slideshows", array("action" => "mainslideshow", "type" => "file")).
-							$this->Form->input("slideshows.backgroundimage", array("label" => "Background4", "type" => "file")).
-							$this->Form->input("slideshows.insideimage41", array("label" => "Inside Image1", "type" => "file")).
-							$this->Form->input("slideshows.title41", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title")).
-							$this->Form->input("slideshows.subtitle42", array("label" => false, "style" => "direction:ltr", "placeholder" => "SubTitle")).
+						<legend>Slideshow (Type 4)</legend>'.
+							$this->Form->create("Slideshow", array("action" => "mainslideshow", "type" => "file")).
+							$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "4")).
+							$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
+							$this->Form->input("slideshows.insideimage1", array("label" => "Inside Image1", "type" => "file")).
+							$this->Form->input("slideshows.title", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title", "maxLength"=>"33")).
+							$this->Form->input("slideshows.subtitle", array("label" => false, "style" => "direction:ltr", "placeholder" => "SubTitle", "maxLength"=>"28")).
 							$this->Form->end("Save", array("type" => "submit", "escape" => true)).
 						'</fieldset>
 						</div>

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$("#closeForm").find("img").click(function (){
-		dashboard.closeForm(".main-slideshow-content-form");
+		$(".main-slideshow-content-form").hide();
 	});
 	$("#slide1").click(function(){
 		$("#slideshow1-submit-form").toggle(function(){
