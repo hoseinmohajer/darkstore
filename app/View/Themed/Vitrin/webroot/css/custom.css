@@ -1,0 +1,21 @@
+.fixed{
+	position: fixed;
+	top: 0px;
+	z-index: 2000;
+	height: 27px;
+	background-color: #f0f0f0;
+}
+.portfolio-item:hover .portfolio-item-content > .test{
+	display: block !important;
+}
+
+.portfolio-item:hover .portfolio-item-content > .test2{
+	display: none;
+}
+/*#topcontrol{
+	position: fixed !important;
+	bottom: 0px !important;
+	right: 7px !important;
+	opacity: 1 !important;
+	cursor: pointer !important;
+}*/

@@ -1,29 +1,16 @@
 <?php echo $this->Vitrins->topmenu('home');?>
-<?php echo @$this->Vitrins->slideshow($slideshowData);?>
-
-<!-- <div class="container big-icon-block">
-  <div class="row"> 
-	<div class="four columns icon-block-content"> <a href="full_width.html"><img src="theme/vitrin/images/icon_box_1.png" alt="" /></a>
-		<h3> Lorem ipsum dolor sit </h3>
-		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.</p>
-		<a class="button" href="#">Read more +</a> </div>
-	<div class="four columns icon-block-content"> <a href="full_width.html"><img src="theme/vitrin/images/icon_box_2.png" alt="" /></a>
-		<h3> Lorem ipsum dolor sit </h3>
-		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.</p>
-		<a class="button" href="#">Read more +</a> </div>
-	<div class="four columns icon-block-content"> <a href="full_width.html"><img src="theme/vitrin/images/icon_box_3.png" alt="" /></a>
-		<h3> Lorem ipsum dolor sit </h3>
-		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum. </p>
-		<a class="button" href="#">Read more +</a> </div>
+<div class="page-header ph-bg1">
+<div  class="clickable variable-sizes clearfix">
+  <div class="twelve columns">
+	<p class="page-title">All Goods</p>
+	<ul class="breadcrumbs">
+		<li><a href="/vitrins">Home</a></li>
+		<li><a href="javascript:void(0);">All Of Goods</a></li>
+	</ul>
   </div>
 </div>
-<div class="row">
-	<div class="twelve columns">
-		<hr/>
-	</div>
-</div> -->
-
-	<div class="twelve columns fixed-menu"> 
+</div>
+	<div class="twelve columns purchase-fixed-menu"> 
 	  <!-- Portfolio Navigation -->
 		<section id="options">
 			<ul id="filters" class="option-set left button-group" data-option-key="filter">

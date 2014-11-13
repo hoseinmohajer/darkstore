@@ -11,7 +11,7 @@
 		<?php 
 			echo $this->Html->css(array('foundation.min', 'styles', '/titan/css/jquery.titanlighbox', '/rs-plugin/css/settings', '/fonts/googleapis'));
 			echo $this->Html->script(array('foundation.min', 'modernizr.foundation', 'app', 'jquery.1.7.2', 'jquery.min', '/rs-plugin/js/jquery.themepunch.plugins.min' , '/rs-plugin/js/jquery.themepunch.revolution.min'));
-			echo $this->Html->css(array('/themes_panel/farbtastic/farbtastic', '/themes_panel/themes_panel', 'colors', 'darkstore'));
+			echo $this->Html->css(array('/themes_panel/farbtastic/farbtastic', '/themes_panel/themes_panel', 'colors', 'darkstore', 'custom'));
 			echo $this->fetch('css');
 			echo $this->fetch('script');
 		?>
@@ -25,7 +25,7 @@
 			echo $this->Session->flash();
 			echo $this->fetch('content');
 
-			echo $this->Html->script(array('jquery.1.7.2', 'jquery.min', 'jquery.infieldlabel.min', 'scripts', 'app', '/titan/js/prettify', '/titan/js/jquery.titanlighbox', /*'/themes_panel/farbtastic/farbtastic', '/themes_panel/themes_panel',*/ '/slideshow/slideshow', '/slideshow/slideshowdataloader'));
+			echo $this->Html->script(array('jquery.1.7.2', 'jquery.min', 'jquery.infieldlabel.min', 'scripts', 'app', '/titan/js/prettify', '/titan/js/jquery.titanlighbox', /*'/themes_panel/farbtastic/farbtastic', '/themes_panel/themes_panel',*/ '/slideshow/slideshow', '/slideshow/slideshowdataloader', 'jquery.wmuSlider', 'custom'));
 		?>
 	</body>
 </html>

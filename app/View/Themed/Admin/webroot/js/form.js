@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	/*** START main slide show add form ***/
 	$("#closeForm").find("img").click(function (){
 		$(".main-slideshow-content-form").hide();
 	});
@@ -34,5 +35,24 @@ $(document).ready(function() {
 		$("#slideshow2-submit-form").hide();
 		$("#slideshow1-submit-form").hide();
 	});
+	/*** END main slide show add form ***/
+
+	/*** START main slideshow list ***/
+	$("#slideshow-list-type1").click(function (){
+		$("#slideshow-list-type1").next("ul").toggle(function (){
+			// ...
+		});
+	});
+	$("#slideshow-list-type2").click(function (){
+		$("#slideshow-list-type2").next("ul").toggle(function (){
+			// ...
+		});
+	});
+	$("#slideshow-list-type3").click(function (){
+		$("#slideshow-list-type3").next("ul").toggle(function (){
+			// ...
+		});
+	});
+	/*** END main slideshow list ***/
 
 });

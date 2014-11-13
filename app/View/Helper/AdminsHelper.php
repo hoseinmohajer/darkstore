@@ -2,13 +2,13 @@
 	App::uses('AppHelper', 'View/Helper');
 	class AdminsHelper extends AppHelper{
 		public $helpers = array('Html', 'Form', 'Session');
-		public function slideshowform() {
+		public function slideshowaddform() {
 			echo '
 				<section class="widget slideshowform 	small hide-widget main-slideshow-content-form" >
 					<header>
 						<span class="icon">🔿</span>
 						<hgroup>
-							<h1>Main Slideshow</h1>
+							<h1>Main Slideshow (Add)</h1>
 							<h2>Set image and title for show in main page slideshow</h2>
 						</hgroup>
 						<aside>
@@ -33,7 +33,7 @@
 						'</div>
 						<fieldset id="slideshow1-submit-form">
         				<legend>Slideshow (Type 1)</legend>'.
-							$this->Form->create("Slideshow", array("action" => "mainslideshow", "type" => "file")).
+							$this->Form->create("Slideshow", array("action" => "addmainslideshow", "type" => "file")).
 							$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "1")).
 							$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
 							$this->Form->input("slideshows.title", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title", "maxLength"=>"33")).
@@ -42,7 +42,7 @@
 						'</fieldset>
 						<fieldset id="slideshow2-submit-form">
 						<legend>Slideshow (Type 2)</legend>'.
-							$this->Form->create("Slideshow", array("action" => "mainslideshow", "type" => "file")).
+							$this->Form->create("Slideshow", array("action" => "addmainslideshow", "type" => "file")).
 							$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "2")).
 							$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
 							$this->Form->input("slideshows.insideimage1", array("label" => "Inside Image1", "type" => "file")).
@@ -52,7 +52,7 @@
 						'</fieldset>
 						<fieldset id="slideshow3-submit-form">
 						<legend>Slideshow (Type 3)</legend>'.
-							$this->Form->create("Slideshow", array("action" => "mainslideshow", "type" => "file")).
+							$this->Form->create("Slideshow", array("action" => "addmainslideshow", "type" => "file")).
 							$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "3")).
 							$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
 							$this->Form->input("slideshows.insideimage1", array("label" => "Inside Image1", "type" => "file")).
@@ -64,7 +64,7 @@
 						'</fieldset>
 						<fieldset id="slideshow4-submit-form">
 						<legend>Slideshow (Type 4)</legend>'.
-							$this->Form->create("Slideshow", array("action" => "mainslideshow", "type" => "file")).
+							$this->Form->create("Slideshow", array("action" => "addmainslideshow", "type" => "file")).
 							$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "4")).
 							$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
 							$this->Form->input("slideshows.insideimage1", array("label" => "Inside Image1", "type" => "file")).
@@ -75,6 +75,53 @@
 						</div>
 					</div>
 				</section>';
+		}
+		public function slideshoweditform($slideshowEditFormData) {
+			$listType1 = ''; $i = 0;
+			$listType2 = ''; $j = 0;
+			$listType3 = ''; $k = 0;
+			$listType4 = ''; $c = 0;
+
+			foreach ($slideshowEditFormData as $key => $value) {
+				foreach ($value as $key => $value) {
+					switch ($value['type']) {
+						case '1':
+							$i++;
+							$listType1 .= '<li><a href="javascript:void(0);">' . $value['backgroundimage'] . '</a></li>';
+							break;
+						case '2':
+							$j++;
+							$listType2 .= '<li><a href="javascript:void(0);">' . $value['backgroundimage'] . '</a></li>';
+							break;
+						case '3':
+							$k++;
+							$listType3 .= '<li><a href="javascript:void(0);">' . $value['backgroundimage'] . '</a></li>';
+							break;
+						case '4':
+							$c++;
+							$listType4 .= '<li><a href="javascript:void(0);">' . $value['backgroundimage'] . '</a></li>';
+							break;
+					}
+				}
+			}
+			return '<ul>
+						<li>
+							<a href="javascript:void(0);" id="slideshow-list-type1">Type 1<span style="float:right;">('.$i.') ></span></a>
+							<ul class="slideshow-list">'. $listType1 .'</ul>
+						</li>
+						<li>
+							<a href="javascript:void(0);" id="slideshow-list-type2">Type 2<span style="float:right;">('.$j.') ></span></a>
+							<ul class="slideshow-list">'. $listType2 .'</ul>
+						</li>
+						<li>
+							<a href="javascript:void(0);" id="slideshow-list-type3">Type 3<span style="float:right;">('.$k.') ></span></a>
+							<ul class="slideshow-list">'. $listType3 .'</ul>
+						</li>
+						<li>
+							<a href="javascript:void(0);" id="slideshow-list-type4">Type 4<span style="float:right;">('.$c.') ></span></a>
+							<ul class="slideshow-list">'. $listType4 .'</ul>
+						</li>
+					</ul>';
 		}
 	}
 ?>

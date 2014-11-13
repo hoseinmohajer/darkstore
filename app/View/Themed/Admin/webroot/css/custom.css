@@ -169,3 +169,7 @@ ul.settings-dd{
 section.alert{
 	margin-top: 126px;
 }
+.slideshow-list{
+	display:none;
+	background-color:#161616;
+}

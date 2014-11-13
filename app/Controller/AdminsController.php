@@ -7,10 +7,14 @@ class AdminsController extends AppController{
 	}
 	public $helpers = array('Html', 'Form', 'Session', 'Admins');
 	public function admin_index(){
-		//...
+		$this->_editslideshow();
 	}
-	public function admin_mainslideshow() {
-		
+	function _editslideshow() {
+		$this->loadModel('Slideshow');
+		$slideshowEditFormData = $this->Slideshow->find('all');
+		if($slideshowEditFormData){
+			$this->set('slideshowEditFormData', $slideshowEditFormData);
+		}
 	}
 }
 
