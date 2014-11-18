@@ -124,6 +124,10 @@
 					</ul>';
 		}
 		public function goodsaddform() {
+			$optoins = array(
+					"1" => "one cat",
+					"2" => "two cat",
+				);
 			echo '
 				<section class="widget small hide-widget goods-add-form" >
 					<header>
@@ -146,12 +150,11 @@
 					<div class="content">
 						<div class="field-wrap">
 							<fieldset id="">
-	        					<legend>Goods add form</legend>'.
-								$this->Form->create("Slideshow", array("action" => "addmainslideshow", "type" => "file")).
-								$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "1")).
-								$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
-								$this->Form->input("slideshows.title", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title", "maxLength"=>"33")).
-								$this->Form->input("slideshows.subtitle", array("label" => false, "style" => "direction:ltr", "placeholder" => "SubTitle", "maxLength"=>"28")).
+								<legend>Goods add form</legend>'.
+								$this->Form->create("Good", array("controller" => "admins", "action" => "admin_addgood", "type" => "file")).
+								$this->Form->input("goods.name", array("label" => false, "placeholder" => "Name")).
+								$this->Form->input("goods.cost", array("label" => false, "placeholder" => "Cost")).
+								$this->Form->input("goods.category", array("options" => $optoins, "label" => "Category", "selected" => "2", "style" => "input")).
 								$this->Form->end("Save", array("class" => "green", "type" => "submit", "escape" => true, 'formnovalidate' => false)).
 							'</fieldset>
 						</div>
