@@ -93,9 +93,10 @@ $(document).ready(function() {
 	// Clear input fields on focus
 	$('input').each(function() {
 		var default_value = this.value;
+		console.log(default_value);
 		$(this).focus(function(){
 		   if(this.value == default_value) {
-		           this.value = '';
+		           // this.value = '';
 		   }
 		});
 		$(this).blur(function(){

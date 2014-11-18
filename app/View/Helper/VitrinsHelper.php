@@ -23,9 +23,17 @@
 						<!-- NAVIGATION -->
 						<div class='nine columns'>
 							<nav class='top-bar'>
+								<ul>
+						        	<li class='name'>
+						        		<h1>
+						        			<a href='#'> Please select your page</a>
+						        		</h1>
+						        	</li>
+						        	<li class='toggle-topbar'><a href='#'></a></li>
+						        </ul>
 								<section>
 									<ul class='right'>
-										<li class='has-dropdown'>" . $this->Html->Link('Goods', 'javascript:void(0);', array('class' => $goodsActiveClass)) . "
+										<li class='has-dropdown'>" . $this->Html->Link('Goods', array('action' => 'goods'), array('class' => $goodsActiveClass)) . "
 											<ul class='dropdown'>
 												<li><a href='javascript:void(0);'>Goods1</a></li>
 												<li><a href='javascript:void(0);'>Goods2</a></li>

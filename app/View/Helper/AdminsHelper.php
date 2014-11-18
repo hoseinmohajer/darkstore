@@ -123,5 +123,40 @@
 						</li>
 					</ul>';
 		}
+		public function goodsaddform() {
+			echo '
+				<section class="widget small hide-widget goods-add-form" >
+					<header>
+						<span class="icon">🔿</span>
+						<hgroup>
+							<h1>Add Goods</h1>
+							<h2>Insert goods iamges and details</h2>
+						</hgroup>
+						<aside>
+							<span>
+								<a href="javascript:void(0);">⚙</a>
+								<ul class="settings-dd">
+									<li id="closeForm"><label>Exit Form</label><input type="checkbox" checked="checked"></li>
+									<li><label>Option b</label><input type="checkbox" checked="checked"></li>
+									<li><label>Option c</label><input type="checkbox"></li>
+								</ul>
+							</span>
+						</aside>
+					</header>
+					<div class="content">
+						<div class="field-wrap">
+							<fieldset id="">
+	        					<legend>Goods add form</legend>'.
+								$this->Form->create("Slideshow", array("action" => "addmainslideshow", "type" => "file")).
+								$this->Form->input("slideshows.type", array("label" => false, "type" => "hidden", "value" => "1")).
+								$this->Form->input("slideshows.backgroundimage", array("label" => "Background", "type" => "file")).
+								$this->Form->input("slideshows.title", array("label" => false, "style" => "direction:ltr", "placeholder" => "Title", "maxLength"=>"33")).
+								$this->Form->input("slideshows.subtitle", array("label" => false, "style" => "direction:ltr", "placeholder" => "SubTitle", "maxLength"=>"28")).
+								$this->Form->end("Save", array("class" => "green", "type" => "submit", "escape" => true, 'formnovalidate' => false)).
+							'</fieldset>
+						</div>
+					</div>
+				</section>';
+		}
 	}
 ?>

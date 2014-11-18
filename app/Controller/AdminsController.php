@@ -16,6 +16,9 @@ class AdminsController extends AppController{
 			$this->set('slideshowEditFormData', $slideshowEditFormData);
 		}
 	}
+	function _add_goods(){
+
+	}
 }
 
 ?>

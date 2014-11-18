@@ -81,7 +81,7 @@
 					<?php 
 						echo $this->Html->link(
 						    'BUY',
-						    '/purchases/goods',
+						    '/vitrins/good_ditails',
 						    array('class' => 'success button test', 'id' => 'test', 'style' => 'display:none;')
 						);
 					?>
