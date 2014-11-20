@@ -8,7 +8,7 @@
 	?> Administrator</p>
 		</div>
 		<div class="buttons">
-			<span class="button blue"><a href="logout">Logout</a></span>
+			<span class="button blue"><a href="/admin/users/logout">Logout</a></span>
 		</div>
 	</section>
 </div>

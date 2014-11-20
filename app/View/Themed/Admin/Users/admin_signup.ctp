@@ -2,6 +2,7 @@
 	<section>
 		<h1><strong>Dark</strong> Store</h1>
 		<?php
+			echo $this->Session->flash('auth');
 			echo $this->Form->create('User', array('action' => 'signup', 'type' => 'post'));
 			echo $this->Form->input('username', array('label' => false, 'style' => 'direction:ltr', 'placeholder' => 'Username'));
 			echo $this->Form->input('password', array('label' => false, 'style' => 'direction:ltr', 'placeholder' => 'Password'));

@@ -24,8 +24,11 @@ class VitrinsController extends AppController{
 	}
 	public function goods() {
 		$this->layout = 'vitrin';
+<<<<<<< HEAD
 		$this->loadModel("Good");
 		debug($this->Good->find('all'));
+=======
+>>>>>>> ea91ce450503ad2bb9b8af7d3a856067b56c4561
 	}
 }
 

@@ -2,15 +2,6 @@
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 class User extends AppModel{
 
-	public function beforeSave($options = array()) {
-        if (!empty($this->data[$this->alias]['password'])) {
-            $passwordHasher = new SimplePasswordHasher(array('hashType' => 'sha256'));
-            $this->data[$this->alias]['password'] = $passwordHasher->hash(
-                $this->data[$this->alias]['password']
-            );
-        }
-        return true;
-    }
 	public $validate = array(
 		"username" => array(
 			'alphaNumeric' => array(
@@ -52,13 +43,20 @@ class User extends AppModel{
             ),
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Password is required'
+				'message' => 'Confirm password is required'
 			)	
 		)
 	);
 	public function _confirmpassword($password){
 		return (isset($this->data['User']['password']) && isset($password) && $this->data['User']['password'] === $password['confirmpassword']) ? true : false;
 	}
+
+	public function beforeSave($options = array()) {
+        if (isset($this->data['User']['password'])) {
+            $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        }
+        return true;
+    }
 }
 
 
