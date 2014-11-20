@@ -27,9 +27,9 @@
 			</ul>	
 		</li>
 		<li>
-			<a href="javascript:void(0);"><span class="icon">&#127748;</span> Media <span class="pip">7</span></a>
+			<a href="javascript:void(0);"><span class="icon">&#127748;</span> Goods </a>
 			<ul class="submenu">
-				<li><a href="javascript:void(0);">Upload file</a></li>
+				<li><a href="javascript:void(0);" id="addGoodsForm">Add goods</a></li>
 				<li><a href="javascript:void(0);">View files</a></li>
 			</ul>
 		</li>
@@ -56,6 +56,7 @@
 <section class="content">
 	<div class="widget-container">
 		<?php echo $this->Admins->slideshowaddform(); ?>
+		<?php echo $this->Admins->goodsaddform(); ?>
 	</div>
 	
 	<div class="widget-container">

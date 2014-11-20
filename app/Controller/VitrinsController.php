@@ -19,6 +19,14 @@ class VitrinsController extends AppController{
 			$this->set('slideshowData', $this->Slideshow->find('all'));
 		}
 	}
+	public function good_ditails() {
+		$this->layout = 'vitrin';
+	}
+	public function goods() {
+		$this->layout = 'vitrin';
+		$this->loadModel("Good");
+		debug($this->Good->find('all'));
+	}
 }
 
 
