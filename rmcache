@@ -1,0 +1,1 @@
+rm -f /var/www/html/darkstore.local/app/tmp/cache/models/* /var/www/html/darkstore.local/app/tmp/cache/persistent/* /var/www/html/darkstore.local/app/tmp/cache/views/*

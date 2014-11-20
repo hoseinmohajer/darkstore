@@ -1,8 +1,5 @@
 $(document).ready(function() {
-	
-	
-	
-	
+
 	// Adds title attributes and classnames to list items	 
 	$("ul li a:contains('Dashboard')").addClass("dashboard").attr('title', 'Dashboard');
 	$("ul li a:contains('Pages')").addClass("pages").attr('title', 'Pages');
@@ -96,9 +93,10 @@ $(document).ready(function() {
 	// Clear input fields on focus
 	$('input').each(function() {
 		var default_value = this.value;
+		console.log(default_value);
 		$(this).focus(function(){
 		   if(this.value == default_value) {
-		           this.value = '';
+		           // this.value = '';
 		   }
 		});
 		$(this).blur(function(){
@@ -203,8 +201,6 @@ $(document).ready(function() {
 	            $('nav').removeClass('fixed').css('top','0')
 	        }
 	    });
-	 }
-	 });
-    
-    	
+	}
+	});	
 });

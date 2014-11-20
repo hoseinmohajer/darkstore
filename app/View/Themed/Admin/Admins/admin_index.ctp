@@ -8,7 +8,7 @@
 	?> Administrator</p>
 		</div>
 		<div class="buttons">
-			<span class="button blue"><a href="logout">Logout</a></span>
+			<span class="button blue"><a href="/admin/users/logout">Logout</a></span>
 		</div>
 	</section>
 </div>
@@ -19,13 +19,17 @@
 			<a href="javascript:void(0);"><span class="icon">&#128196;</span> Pages</a>
 			<ul class="submenu">
 				<li><a href="javascript:void(0);">Create page</a></li>
+				<li>
+					<a href="javascript:void(0);" id="mainSlideshowForm">Add Main Slideshow<span style="float:right;">v</span></a>
+					<?php echo $this->Admins->slideshoweditform($slideshowEditFormData); ?>
+				</li>
 				<li><a href="javascript:void(0);">View pages</a></li>
 			</ul>	
 		</li>
 		<li>
-			<a href="javascript:void(0);"><span class="icon">&#127748;</span> Media <span class="pip">7</span></a>
+			<a href="javascript:void(0);"><span class="icon">&#127748;</span> Goods </a>
 			<ul class="submenu">
-				<li><a href="javascript:void(0);">Upload file</a></li>
+				<li><a href="javascript:void(0);" id="addGoodsForm">Add goods</a></li>
 				<li><a href="javascript:void(0);">View files</a></li>
 			</ul>
 		</li>
@@ -51,7 +55,8 @@
 	
 <section class="content">
 	<div class="widget-container">
-		
+		<?php echo $this->Admins->slideshowaddform(); ?>
+		<?php echo $this->Admins->goodsaddform(); ?>
 	</div>
 	
 	<div class="widget-container">

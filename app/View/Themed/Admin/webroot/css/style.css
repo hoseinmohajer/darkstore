@@ -1397,7 +1397,7 @@ body.login {
 	height: 30px;
 }
 .jquery-checkbox img{
-	background: transparent url(../images/checkbox.png) no-repeat;
+	background: transparent url(/theme/Admin/imgs/checkbox.png) no-repeat;
 }
 
 .jquery-checkbox img{
