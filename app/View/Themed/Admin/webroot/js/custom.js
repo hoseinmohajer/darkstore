@@ -91,7 +91,7 @@ $(document).ready(function() {
 	});
 	
 	// Clear input fields on focus
-<<<<<<< HEAD
+
 	// $('input').each(function() {
 	// 	var default_value = this.value;
 	// 	console.log(default_value);
@@ -106,22 +106,7 @@ $(document).ready(function() {
 	// 	   }
 	// 	});
 	// });
-=======
-	$('input').each(function() {
-		var default_value = this.value;
-		console.log(default_value);
-		$(this).focus(function(){
-		   if(this.value == default_value) {
-		           // this.value = '';
-		   }
-		});
-		$(this).blur(function(){
-		   if(this.value == '') {
-		           this.value = default_value;
-		   }
-		});
-	});
->>>>>>> ea91ce450503ad2bb9b8af7d3a856067b56c4561
+
 	
     $('.post').wysiwyg({
 		controls: {
