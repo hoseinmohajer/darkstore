@@ -124,10 +124,19 @@
 					</ul>';
 		}
 		public function goodsaddform() {
-			$optoins = array(
-					"1" => "one cat",
-					"2" => "two cat",
-				);
+			$options = array(
+				'1' => 'category 1',
+				'2' => 'category 2',
+				'3' => 'category 3',
+				'4' => 'category 4',
+				'5' => 'category 5',
+				'6' => 'category 6',
+				'7' => 'category 7',
+				'8' => 'category 8',
+				'9' => 'category 9',
+				'10' => 'category 10'
+			);
+
 			echo '
 				<section class="widget small hide-widget goods-add-form" >
 					<header>
@@ -150,11 +159,12 @@
 					<div class="content">
 						<div class="field-wrap">
 							<fieldset id="">
-								<legend>Goods add form</legend>'.
-								$this->Form->create("Good", array("controller" => "admins", "action" => "admin_addgood", "type" => "file")).
-								$this->Form->input("goods.name", array("label" => false, "placeholder" => "Name")).
-								$this->Form->input("goods.cost", array("label" => false, "placeholder" => "Cost")).
-								$this->Form->input("goods.category", array("options" => $optoins, "label" => "Category", "selected" => "2", "style" => "input")).
+	        					<legend>Goods add form</legend>'.
+								$this->Form->create("Good", array("controller" => "admins", "action" => "goods", "type" => "file")).
+								$this->Form->input('Good.category', array("type" => "select", "options" => $options)).
+								$this->Form->input("Good.name", array("label" => "Name", "type" => "text")).
+								$this->Form->input("Good.cost", array("label" => "Cost", "style" => "direction:ltr", "placeholder" => "Title", "maxLength"=>"33")).
+								$this->Form->input("Good.description", array("label" => "false", "type" => "textarea", "style" => "direction:ltr", "placeholder" => "SubTitle", "maxLength"=>"28")).
 								$this->Form->end("Save", array("class" => "green", "type" => "submit", "escape" => true, 'formnovalidate' => false)).
 							'</fieldset>
 						</div>

@@ -23,9 +23,10 @@ class AdminsController extends AppController{
 			$this->set('slideshowEditFormData', $slideshowEditFormData);
 		}
 	}
-
-	function _add_goods(){
-
+	public function goods() {
+		$this->layout = 'vitrin';
+		$this->loadModel("Good");
+		debug($this->Good->find('all'));
 	}
 }
 
