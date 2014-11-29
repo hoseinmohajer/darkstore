@@ -60,11 +60,23 @@ $(document).ready(function() {
 	// Navigation accordion menu
 	$(window).bind("load resize", function(){
 		if ($("nav").width() > 100) {
-			$("nav ul li:has(ul)").hover(function(){
-				$(this).find("ul.submenu").stop("true", "true").slideDown(500);
-			}, function(){
-				$(this).find("ul.submenu").stop("true", "true").delay(100).slideUp(500);
+			
+			$("nav ul li:has(ul)").click(function(){
+				if($(this).find(".submenu").css("display") == "none"){
+					$(this).find("ul.submenu").stop("true", "true").slideDown(500);
+				}
+				//  else if($(this).find(".submenu").css("display") == "block"){
+				// 	$(this).find("ul.submenu").stop("true", "true").delay(100).slideUp(500);
+				// }
 			});
+
+			// if($("nav ul li:has(ul)").find(".submenu").css("display") == "none" ){
+			// } else{
+			// 	$("nav ul li:has(ul)").click(function(){
+			// 		$(this).find("ul.submenu").stop("true", "true").delay(100).slideUp(500);
+			// 	});
+			// }
+
 		} else {
 			$("nav ul li ul").empty();
 		}
@@ -94,7 +106,6 @@ $(document).ready(function() {
 
 	// $('input').each(function() {
 	// 	var default_value = this.value;
-	// 	console.log(default_value);
 	// 	$(this).focus(function(){
 	// 	   if(this.value == default_value) {
 	// 	           this.value = '';
@@ -190,19 +201,19 @@ $(document).ready(function() {
 	
 	// Sticky sidebar
 	
-	$(window).bind("load resize", function(){
-	if ( $(window).width() > 768) {
-	    var aboveHeight = $('.testing').outerHeight();
+	// $(window).bind("load resize", function(){
+	// if ( $(window).width() > 768) {
+	//     var aboveHeight = $('.testing').outerHeight();
 	
-	    $(window).scroll(function(){
-			if ($(window).scrollTop() > aboveHeight){
-	            $('nav').addClass('fixed').css('top','0').next()
+	//     $(window).scroll(function(){
+	// 		if ($(window).scrollTop() > aboveHeight){
+	//             $('nav').addClass('fixed').css('top','0').next()
 	
-	            } else {
+	//             } else {
 	
-	            $('nav').removeClass('fixed').css('top','0')
-	        }
-	    });
-	}
-	});	
+	//             $('nav').removeClass('fixed').css('top','0')
+	//         }
+	//     });
+	// }
+	// });	
 });

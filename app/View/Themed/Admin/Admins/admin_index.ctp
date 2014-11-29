@@ -8,7 +8,7 @@
 	?> Administrator</p>
 		</div>
 		<div class="buttons">
-			<span class="button blue"><a href="/admin/users/logout">Logout</a></span>
+			<span><a class="btn btn-primary" href="/admin/users/logout" style="color:#fff;">Logout</a></span>
 		</div>
 	</section>
 </div>
@@ -29,24 +29,8 @@
 		<li>
 			<a href="javascript:void(0);"><span class="icon">&#127748;</span> Goods </a>
 			<ul class="submenu">
-				<li><a href="javascript:void(0);" id="addGoodsForm">Add goods</a></li>
-				<li><a href="javascript:void(0);">View files</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="javascript:void(0);"><span class="icon">&#59160;</span> Blog <span class="pip">12</span></a>
-			<ul class="submenu">
-				<li><a href="javascript:void(0);">New post</a></li>
-				<li><a href="javascript:void(0);">All posts</a></li>
-				<li><a href="javascript:void(0);">View comments</a></li>
-			</ul>
-		</li>
-		<li><a href="javascript:void(0);"><span class="icon">&#128202;</span> Statistics</a></li>
-		<li><a href="javascript:void(0);"><span class="icon">&#128101;</span> Users <span class="pip">3</span></a></li>
-		<li>
-			<a href="javascript:void(0);"><span class="icon">&#9881;</span> UI Elements</a>
-			<ul class="submenu">
-				<li><a href="javascript:void(0);">Icon fonts</a></li>
+				<li><a href="javascript:void(0);" id="goods-add-form-button">Add goods</a></li>
+				<li><a href="javascript:void(0);" id="goods-list">View files</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -57,9 +41,6 @@
 	<div class="widget-container">
 		<?php echo $this->Admins->slideshowaddform(); ?>
 		<?php echo $this->Admins->goodsaddform(); ?>
-	</div>
-	
-	<div class="widget-container">
-		
+		<?php echo $this->Admins->productlist($productsData); ?>
 	</div>
 </section>

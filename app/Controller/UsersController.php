@@ -11,6 +11,7 @@ class UsersController extends AppController{
 	
 	public function admin_index(){
 		$this->layout = 'admin';
+		$this->redirect(array("controller" => "admins", "action" => "index"));
 	}
 
 	public function admin_login(){

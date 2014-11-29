@@ -5,10 +5,9 @@ class SlideshowsController extends AppController{
 	public function beforeFilter(){
 		parent::beforeFilter();
 	}
-	public $components = array('Session');
 	public $helpers = array('Html', 'Form', 'Session', 'Admins');
 	
-	public function admin_addmainslideshow() {
+	public function admin_add() {
 		$imageNames=array('png','jpeg','jpg','pjpeg');
 		$imageTypes=array('image/jpeg','image/jpg','image/png','image/pjpeg');
 		if($this->request->is("POST")){
@@ -76,7 +75,7 @@ class SlideshowsController extends AppController{
 			}
 		}
 	}
-	public function admin_editmainslideshow() {
+	public function admin_update() {
 		$slideshowEditFormData = $this->Slideshow->find('all');
 		if($slideshowEditFormData){
 			$this->set('slideshowEditFormData', $slideshowEditFormData);
