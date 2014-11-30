@@ -6,10 +6,10 @@ var dashboard = (function() {
 			// ...
 		},
 		closeForm: function(selector){
-			$(selector).css("display", "none");
+			$(selector).hide();
 		},
-		showForm: function (selector){
-			$(selector).css("display", "block");
+		openForm: function (selector){
+			$(selector).show();
 		}
 	};
 

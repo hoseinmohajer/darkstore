@@ -173,3 +173,21 @@ section.alert{
 	display:none;
 	background-color:#161616;
 }
+.description-td-width{
+	width: 250px;
+}
+.image-td-width{
+	width: 105px;
+}
+#goods-list-form-container{
+	display: none;
+}
+.admin-update-iamges-list li{
+	display: inline;
+	list-style: none;
+	padding-right: 5px;
+}
+.admin-update-iamges-list li:hover{
+	opacity: 0.5;
+	cursor: pointer;
+}
