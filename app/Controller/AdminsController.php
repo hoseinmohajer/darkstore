@@ -13,8 +13,8 @@ class AdminsController extends AppController{
 		$this->_updateproduct();
 	}
 
-	public function admin_addgood(){
-		$this->loadModel('Good');
+	public function admin_addproduct(){
+		$this->loadModel('Product');
 	}
 
 	function _updateslideshow() {
@@ -25,18 +25,18 @@ class AdminsController extends AppController{
 		}
 	}
 
-	public function goods() {
+	public function Products() {
 		$this->layout = 'vitrin';
-		$this->loadModel("Good");
-		debug($this->Good->find('all'));
+		$this->loadModel("Product");
+		debug($this->Product->find('all'));
 	}
 
 	function _updateproduct(){
-		$this->loadModel('Good');
-		if($this->Good->find('all')) {
-			// debug(unserialize($this->Good->find('all')[0]['Good']['images_name']));
-			// debug($this->Good->find('all')[0]['Good']['images_name']	);
-			$this->set('productsData', $this->Good->find('all'));
+		$this->loadModel('Product');
+		if($this->Product->find('all')) {
+			// debug(unserialize($this->Product->find('all')[0]['Product']['images_name']));
+			// debug($this->Product->find('all')[0]['Product']['images_name']	);
+			$this->set('productsData', $this->Product->find('all'));
 		}
 	}
 }

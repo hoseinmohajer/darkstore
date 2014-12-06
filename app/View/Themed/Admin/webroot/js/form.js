@@ -53,18 +53,57 @@ $(document).ready(function() {
 	});
 	/*** END main slideshow list ***/
 
-	/*** START goods add form***/
-		$(".close-form").click(function (){
-			dashboard.closeForm("#goods-add-form-container");
-		});
-		$("#goods-add-form-button").click(function (){
-			dashboard.openForm("#goods-add-form-container");
-		});
-		$("#goods-list").click(function (){
-			dashboard.openForm("#goods-list-form-container");
-		});
-		$(".close-form").click(function (){
-			dashboard.closeForm("#goods-list-form-container");
-		});
-	/*** END goods add form***/
+	/*** START products add form***/
+	$("#products-add-form-close-btn").click(function (){
+		$("#products-add-form-container").hide();
+	});
+	$("#products-add-form-button").click(function (){
+		$("#products-add-form-container").show();
+		$(".main-slideshow-content-form").hide();
+		$("#products-list-form-container").hide();
+	});
+	$("#products-list").click(function (){
+		$("#products-list-form-container").show();
+		$(".main-slideshow-content-form").hide();
+		$("#products-add-form-container").hide();
+	});
+	$("#products-list-form-close-btn").click(function (){
+		$("#products-list-form-container").hide();
+	});
+
+	$("#ProductName").change(function (){
+		if($("#ProductName").val() !== ""){	
+			if($("#product-add-form-upload-images").html() === undefined)
+				$("#products-add-form-images-input").append('<button type="button" data-toggle="modal" id="product-add-form-upload-images" data-target="#myModal" class="btn btn-warning">Upload Images</button>');
+			$("#ProductimagesDirectoryname").val( $("#ProductName").val() );
+		} else{
+			$('#product-add-form-upload-images').remove();
+		}
+	});
+
+	$("#product-images-upload-button").click(function (){
+		alert("hello");
+		$("#products-add-form-container").show();
+		$(".main-slideshow-content-form").hide();
+		$("#products-list-form-container").hide();
+		var a = $("#ProductCategory").val();
+		var b = $("#ProductName").val();
+		var c = $("#ProductCost").val();
+		var d = $("#ProductDescription").val();
+		console.log(a, b, c, d);
+	});
+	
+	/*** END products add form***/
+
+	/*** START slideshow add form***/
+	$("#mainSlideshowForm").click(function (){
+		$("#flash_custom").hide();
+		$(".main-slideshow-content-form").show();
+		$("#products-list-form-container").hide();
+		$("#products-add-form-container").hide();
+	});
+	$("#slideshow-add-form-close-btn").click(function (){
+		$(".main-slideshow-content-form").hide();
+	});
+	/*** END slideshow add form***/
 });

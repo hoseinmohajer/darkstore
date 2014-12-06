@@ -15,8 +15,6 @@
 
 <?php
 	echo $this->Html->script(array('jquery-1.11.1', 'jquery.wysiwyg', '/bootstrap3/js/bootstrap', 'custom', 'cycle', 'jquery.checkbox.min', 'flot', 'flot.resize', 'flot-time', 'dashboard', 'sidemenu', 'form', 'main'));
-	// echo $this->Html->script(array('flot-pie'));
-	// echo $this->Html->script(array('flot-graphs'));
 	echo $this->Html->script(array('cycle', 'jquery.tablesorter.min'));
 ?>
 	<div style="color:#ff0000;direction:ltr;backgrount-color:#fff !important;float:left;">
