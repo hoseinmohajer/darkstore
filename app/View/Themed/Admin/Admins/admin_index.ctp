@@ -14,25 +14,10 @@
 </div>
 <nav>
 	<ul>
-		<li class="section"><a href="admin"><span class="icon">&#128711;</span> Dashboard</a></li>
-		<li>
-			<a href="javascript:void(0);"><span class="icon">&#128196;</span> Pages</a>
-			<ul class="submenu">
-				<li><a href="javascript:void(0);">Create page</a></li>
-				<li>
-					<a href="javascript:void(0);" id="mainSlideshowForm">Add Main Slideshow<span style="float:right;">v</span></a>
-					<?php echo $this->Admins->slideshoweditform($slideshowEditFormData); ?>
-				</li>
-				<li><a href="javascript:void(0);">View pages</a></li>
-			</ul>	
-		</li>
-		<li>
-			<a href="javascript:void(0);"><span class="icon">&#127748;</span> Goods </a>
-			<ul class="submenu">
-				<li><a href="javascript:void(0);" id="goods-add-form-button">Add goods</a></li>
-				<li><a href="javascript:void(0);" id="goods-list">View files</a></li>
-			</ul>
-		</li>
+		<li><a href="javascript:void(0);" id="mainSlideshowForm">Add Main Slideshow</a></li>
+		<li><a href="javascript:void(0);">Main Slideshow List</a></li>
+		<li><a href="javascript:void(0);" id="products-add-form-button">Add products</a></li>
+		<li><a href="javascript:void(0);" id="products-list">products List</a></li>
 	</ul>
 </nav>
 
@@ -40,7 +25,7 @@
 <section class="content">
 	<div class="widget-container">
 		<?php echo $this->Admins->slideshowaddform(); ?>
-		<?php echo $this->Admins->goodsaddform(); ?>
+		<?php echo $this->Admins->productsaddform(); ?>
 		<?php echo $this->Admins->productlist($productsData); ?>
 	</div>
 </section>
