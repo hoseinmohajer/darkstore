@@ -74,23 +74,29 @@ $(document).ready(function() {
 	$("#ProductName").change(function (){
 		if($("#ProductName").val() !== ""){	
 			if($("#product-add-form-upload-images").html() === undefined)
-				$("#products-add-form-images-input").append('<button type="button" data-toggle="modal" id="product-add-form-upload-images" data-target="#myModal" class="btn btn-warning">Upload Images</button>');
+				$("#products-add-form-images-input").append('<button type="button" data-toggle="modal" id="product-add-form-upload-images" data-target="#products-upload-form-modal" class="btn btn-warning">Upload Images</button>');
 			$("#ProductimagesDirectoryname").val( $("#ProductName").val() );
 		} else{
 			$('#product-add-form-upload-images').remove();
 		}
 	});
 
+
+	//console.log($("#products-upload-image-form"))
+	// $("#products-upload-image-form").submit(function(e){
+		//e.preventDefault();
+		//console.log("hello");
+	// });
 	$("#product-images-upload-button").click(function (){
-		alert("hello");
-		$("#products-add-form-container").show();
-		$(".main-slideshow-content-form").hide();
-		$("#products-list-form-container").hide();
-		var a = $("#ProductCategory").val();
-		var b = $("#ProductName").val();
-		var c = $("#ProductCost").val();
-		var d = $("#ProductDescription").val();
-		console.log(a, b, c, d);
+		console.log($("#product-images-upload-button"));
+		$("#products-upload-form-modal").modal('hide');
+		// $.post('/admin/productimages/getimage', , function (data){
+		// 	$.each(data, function (key, value){
+		// 		console.log(key, value);
+		// 		$("#products-add-form-images-input").append("<div>hello</div>");
+		// 	});
+
+		// }, 'json');
 	});
 	
 	/*** END products add form***/
@@ -107,3 +113,4 @@ $(document).ready(function() {
 	});
 	/*** END slideshow add form***/
 });
+function danial(data){console.log($.parseJSON(data));}
