@@ -36,11 +36,12 @@ class ProductimagesController extends AppController{
 	}
 
 	public function admin_deleteimage($id) {
+		$this->layout = NULL;
+		$this->autoRender = false;
 		if($this->Productimage->delete($id)){
-			// $this->admin_getimage();
-			die("success");
+			return true;
 		} else{
-			die("faild");
+			return false;
 		}
 	}
 

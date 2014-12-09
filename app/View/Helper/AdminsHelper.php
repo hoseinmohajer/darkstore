@@ -158,8 +158,12 @@
 									$this->Form->input("Product.name", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "Name")).
 									$this->Form->input("Product.cost", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "$1000")).
 									$this->Form->input("Product.description", array("label" => false, "type" => "textarea", "class" => "validate[required] form-control placeholder", "placeholder" => "Description")).
-								
-									'<div class="row" id="product-images-preview-container"></div>
+									'<div class="checkbox">
+										<label>' .
+											$this->Form->input('product_published', array("label" => "Published", "type" => "checkbox", "style" => "margin-top:0px;")) .
+										'</label>
+									</div>							
+									<div class="row" id="product-images-preview-container"></div>
 								</div>
 							</div>	
 							<div class="panel-footer">'.
@@ -183,7 +187,7 @@
 										<div class="col-sm-10">
 											<div class="checkbox">
 												<label>' .
-													$this->Form->input('isMain', array("Is Main" => "false", "type" => "checkbox", "style" => "margin-top:0px;")) .
+													$this->Form->input('isMain', array("label" => "Is Main", "type" => "checkbox", "style" => "margin-top:0px;")) .
 												'</label>
 											</div>
 										</div>
