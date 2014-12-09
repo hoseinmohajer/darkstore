@@ -135,17 +135,6 @@
 				'9' => 'category 9',
 				'10' => 'category 10'
 			);
-			// $productImages = '';
-			// if(isset($productimagesname)){
-			// 	foreach($productimagesname as $imageinfo):
-			// 		$imgSrc = '.' . $imageinfo['Productimages']['productimages_imagesDirectoryAddress'] . '/' . $imageinfo['Productimages']['productimages_name'];
-			// 		$productImages .= '<div class="col-md-3">
-			// 							<a href="javascript:void(0);" class="thumbnail">
-			// 								<img src="' . $imgSrc . '" alt="DarkStore Product">
-			// 							</a>
-			// 						</div>';
-			// 	endforeach;
-			// }
 			echo '
 			<div class="row" id="products-add-form-container" style="display:none;">
 					<div class="col-md-12">
@@ -170,7 +159,7 @@
 									$this->Form->input("Product.cost", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "$1000")).
 									$this->Form->input("Product.description", array("label" => false, "type" => "textarea", "class" => "validate[required] form-control placeholder", "placeholder" => "Description")).
 								
-									'<div class="row"></div>
+									'<div class="row" id="product-images-preview-container"></div>
 								</div>
 							</div>	
 							<div class="panel-footer">'.
@@ -188,19 +177,19 @@
 								</div>
 								<iframe name="product-images-upload-iframe" id="product-images-upload-iframe" style="display: none"></iframe>
 								<div class="modal-body">' .
-									$this->Form->create("Productimage", array("action" => "add", "id" => "products-upload-image-form", "method" => "POST", "type" => "file", "role" => "form", "class" => "validate form-horizontal", "target" => "product-images-upload-iframe")) . 
-									$this->Form->input('Productimage.image', array("label" => false, "type" => "file", "class" => "validate[required] form-control placeholder")) .
+									$this->Form->create("Productimage", array("action" => "add", "method" => "POST", "type" => "file", "role" => "form", "class" => "validate form-horizontal", "target" => "product-images-upload-iframe")) . 
+									$this->Form->input('image', array("label" => false, "type" => "file", "class" => "validate[required] form-control placeholder")) .
 									'<div class="form-group">
 										<div class="col-sm-10">
 											<div class="checkbox">
 												<label>' .
-													$this->Form->input('Productimage.isMain', array("Is Main" => "false", "type" => "checkbox", "style" => "margin-top:0px;")) .
+													$this->Form->input('isMain', array("Is Main" => "false", "type" => "checkbox", "style" => "margin-top:0px;")) .
 												'</label>
 											</div>
 										</div>
 									</div>' .
 
-									$this->Form->input("Productimage.directoryname", array("label" => false, "type" => "hidden")) .
+									$this->Form->input("directoryname", array("label" => false, "type" => "hidden")) .
 								'</div>
 								<div class="modal-footer">
 									<span class="pull-right">' .
@@ -208,6 +197,7 @@
 									'</span>
 									<span class="pull-left">' .
 										$this->Form->button("Upload", array("class" => "btn btn-success", "id" => "product-images-upload-button", "type" => "submit", "escape" => true, "formnovalidate" => false)) .
+										$this->Form->end().
 									'</span>
 								</div>
 							</div>
