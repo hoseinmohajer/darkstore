@@ -135,8 +135,8 @@
 				'9' => 'category 9',
 				'10' => 'category 10'
 			);
-
-			echo '<div class="row" id="products-add-form-container" style="display:none;">
+			echo '
+			<div class="row" id="products-add-form-container" style="display:none;">
 					<div class="col-md-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -158,8 +158,13 @@
 									$this->Form->input("Product.name", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "Name")).
 									$this->Form->input("Product.cost", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "$1000")).
 									$this->Form->input("Product.description", array("label" => false, "type" => "textarea", "class" => "validate[required] form-control placeholder", "placeholder" => "Description")).
-								'</div>
-								
+									'<div class="checkbox">
+										<label>' .
+											$this->Form->input('product_published', array("label" => "Published", "type" => "checkbox", "style" => "margin-top:0px;")) .
+										'</label>
+									</div>							
+									<div class="row" id="product-images-preview-container"></div>
+								</div>
 							</div>	
 							<div class="panel-footer">'.
 									$this->Form->end("Save", array("class" => "btn btn-success green", "type" => "submit", "escape" => true, 'formnovalidate' => false)).
@@ -167,35 +172,36 @@
 						</div>	
 					</div>	
 				</div>
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade" id="products-upload-form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 									<h4 class="modal-title" id="myModalLabel">Upload Product Image</h4>
 								</div>
+								<iframe name="product-images-upload-iframe" id="product-images-upload-iframe" style="display: none"></iframe>
 								<div class="modal-body">' .
-									$this->Form->create("Productimages", array("action" => "add", "method" => "post", "type" => "file", "role" => "form", "class" => "validate form-horizontal")) . 
-									$this->Form->input('Productimages.image', array("label" => false, "type" => "file", "class" => "validate[required] form-control placeholder")) .
+									$this->Form->create("Productimage", array("action" => "add", "method" => "POST", "type" => "file", "role" => "form", "class" => "validate form-horizontal", "target" => "product-images-upload-iframe")) . 
+									$this->Form->input('image', array("label" => false, "type" => "file", "class" => "validate[required] form-control placeholder")) .
 									'<div class="form-group">
 										<div class="col-sm-10">
 											<div class="checkbox">
 												<label>' .
-													$this->Form->input('Productimages.isMain', array("Is Main" => "false", "type" => "checkbox", "style" => "margin-top:0px;")) .
-													'
-												</label>
+													$this->Form->input('isMain', array("label" => "Is Main", "type" => "checkbox", "style" => "margin-top:0px;")) .
+												'</label>
 											</div>
 										</div>
 									</div>' .
 
-									$this->Form->input("Productimages.directoryname", array("label" => false, "type" => "hidden")) .
+									$this->Form->input("directoryname", array("label" => false, "type" => "hidden")) .
 								'</div>
 								<div class="modal-footer">
 									<span class="pull-right">' .
 										$this->Form->button("Close", array("class" => "btn btn-default", "type" => "button", "data-dismiss" => "modal")) .
 									'</span>
 									<span class="pull-left">' .
-										$this->Form->end("Upload", array("class" => "btn btn-success", "id" => "product-images-upload-button", "type" => "submit", "escape" => true, "formnovalidate" => false)) .
+										$this->Form->button("Upload", array("class" => "btn btn-success", "id" => "product-images-upload-button", "type" => "submit", "escape" => true, "formnovalidate" => false)) .
+										$this->Form->end().
 									'</span>
 								</div>
 							</div>

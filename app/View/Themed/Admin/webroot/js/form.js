@@ -74,23 +74,14 @@ $(document).ready(function() {
 	$("#ProductName").change(function (){
 		if($("#ProductName").val() !== ""){	
 			if($("#product-add-form-upload-images").html() === undefined)
-				$("#products-add-form-images-input").append('<button type="button" data-toggle="modal" id="product-add-form-upload-images" data-target="#myModal" class="btn btn-warning">Upload Images</button>');
-			$("#ProductimagesDirectoryname").val( $("#ProductName").val() );
+				$("#products-add-form-images-input").append('<button type="button" data-toggle="modal" id="product-add-form-upload-images" data-target="#products-upload-form-modal" class="btn btn-warning">Upload Images</button>');
+			$("#ProductimageDirectoryname").val( $("#ProductName").val() );
 		} else{
 			$('#product-add-form-upload-images').remove();
 		}
 	});
-
 	$("#product-images-upload-button").click(function (){
-		alert("hello");
-		$("#products-add-form-container").show();
-		$(".main-slideshow-content-form").hide();
-		$("#products-list-form-container").hide();
-		var a = $("#ProductCategory").val();
-		var b = $("#ProductName").val();
-		var c = $("#ProductCost").val();
-		var d = $("#ProductDescription").val();
-		console.log(a, b, c, d);
+		$("#products-upload-form-modal").modal('hide');
 	});
 	
 	/*** END products add form***/
@@ -107,3 +98,22 @@ $(document).ready(function() {
 	});
 	/*** END slideshow add form***/
 });
+function showImages(data){
+	$("#product-images-preview-container").html(' ');
+	$.each($.parseJSON(data), function (key, value){
+		var srcValue = value.Productimage.productimages_imagesDirectoryAddress + '/' + value.Productimage.productimages_name;
+		if(value.Productimage.productimages_isMain === '1'){
+			$("#product-images-preview-container").append('<div id="imgbox_' + value.Productimage.id + '" class="col-xs-6 col-md-3"><a href="javascript:void(0);" class="thumbnail"><span onclick="deleteImage(\'' + value.Productimage.id + '\');"><i class="glyphicon glyphicon-remove"></i></span><span class="pull-right label label-danger">Main</span><img src="' + srcValue+ '" alt="DarkStore Product"></a></div>');
+		} else{
+			$("#product-images-preview-container").append('<div id="imgbox_' + value.Productimage.id + '" class="col-xs-6 col-md-3"><a href="javascript:void(0);" class="thumbnail"><span onclick="deleteImage(\'' + value.Productimage.id + '\');"><i class="glyphicon glyphicon-remove"></i></span><img src="' + srcValue+ '" alt="DarkStore Product"></a></div>');
+		}
+	});
+}
+function deleteImage(id){
+	$.post('/admin/productimages/deleteimage/' + id, id, function (data, status){
+		if(status === 'success'){
+			$("#imgbox_" + id).remove();
+		}
+	});
+	
+}
