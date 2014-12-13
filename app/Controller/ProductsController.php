@@ -1,7 +1,6 @@
 <?php
 class ProductsController extends AppController{
 	public $theme = 'Admin';
-	
 	public function beforeFilter(){
 		parent::beforeFilter();
 	}
@@ -9,133 +8,84 @@ class ProductsController extends AppController{
 	public $helpers = array('Html', 'Form', 'Session', 'Admins');
 
 	public function admin_add(){
-		$images_name = array();
-		if($this->request->is('POST')){
-			if($this->request->data){
-				//create directory for GOOD with it name
-				$products_directory_name = preg_replace('/\s+/', '', $this->request->data['Product']['name']);
-				if(!file_exists('./files/productsimage/' . $products_directory_name)){
-					mkdir('./files/goodimages/' . $products_directory_name, 0777, true);
-				}
-				debug($this->request->data);
+		$productFormDataArray = array();
+		if($this->request->is('POST') && $this->request->data){
+			$productFormDataArray['Product']['product_name'] = $this->request->data['name'];
+			$productFormDataArray['Product']['product_cost'] = $this->request->data['cost'];
+			$productFormDataArray['Product']['product_category'] = $this->request->data['category'];
+			$productFormDataArray['Product']['product_description'] = $this->request->data['description'];
+			$productFormDataArray['Product']['product_published'] = $this->request->data['published'];
+			if($this->Product->save($productFormDataArray)){
+				$this->layout = NULL;
+				$this->autoRender = false;
+				return $this->Product->getLastInsertId();
+			} else{
+				return false;
 			}
 		}
-
-
-
-		// $images_name = array();
-		// if($this->request->is('POST')){
-		// 	if($this->request->data){
-		// 		//create directory for GOOD with it name
-		// 		$good_directory_name = preg_replace('/\s+/', '', $this->request->data['Good']['name']);
-		// 		mkdir('./files/goodimages/' . $good_directory_name, 0777, true);
-		// 		foreach ($this->request->data['Good'] as $key => $value) {
-		// 			switch ($key) {
-		// 				case 'images_name1':
-		// 					$images_name['image1']['name'] = $value['name'];
-		// 					if(isset($value['main']) && $value['main'] === '1')
-		// 						$images_name['image1']['main'] = $value['main'];
-		// 					move_uploaded_file($value['tmp_name'],'./files/goodimages/' . $good_directory_name . '/' . $value['name']);
-		// 					unset($this->request->data['Good'][$key]);
-		// 					break;
-		// 				case 'images_name2':
-		// 					$images_name['image2']['name'] = $value['name'];
-		// 					if(isset($value['main']) && $value['main'] === '1')
-		// 						$images_name['image2']['main'] = $value['main'];
-		// 					move_uploaded_file($value['tmp_name'],'./files/goodimages/' . $good_directory_name . '/' . $value['name']);
-		// 					unset($this->request->data['Good'][$key]);
-		// 					break;
-		// 				case 'images_name3':
-		// 					$images_name['image3']['name'] = $value['name'];
-		// 					if(isset($value['main']) && $value['main'] === '1')
-		// 						$images_name['image3']['main'] = $value['main'];
-		// 					move_uploaded_file($value['tmp_name'],'./files/goodimages/' . $good_directory_name . '/' . $value['name']);
-		// 					unset($this->request->data['Good'][$key]);
-		// 					break;
-		// 				case 'images_name4':
-		// 					$images_name['image4']['name'] = $value['name'];
-		// 					if(isset($value['main']) && $value['main'] === '1')
-		// 						$images_name['image4']['main'] = $value['main'];
-		// 					move_uploaded_file($value['tmp_name'],'./files/goodimages/' . $good_directory_name . '/' . $value['name']);
-		// 					unset($this->request->data['Good'][$key]);
-		// 					break;
-		// 			}
-		// 		}
-		// 		$this->request->data['Good']['images_name'] = serialize($images_name);
-		// 		if($this->Good->save($this->request->data)){
-		// 			$this->Session->setFlash("Done", 'flash_custom', array('class' => 'alert'));
-		// 			$this->redirect(array('controller' => 'admins', 'action' => 'index'));
-		// 		}
-		// 	}
-		// }
 	}
+
 
 	public function admin_update($id){
-		// $this->Good->id = $id;
-		// if($this->request->is('GET')){
-		// 	$this->request->data = $this->Good->read();
-		// 	$this->request->data['Good']['images_name'] = unserialize($this->request->data['Good']['images_name']);
-		// } else{
-		// 	if($this->request->data){
-		// 		//create directory for GOOD with it name
-		// 		$good_directory_name = preg_replace('/\s+/', '', $this->request->data['Good']['name']);
-		// 		$good_directory_name = './files/goodimages/' . $good_directory_name;
-		// 		foreach ($this->request->data['Good'] as $key => $value):
-		// 			switch ($key) {
-		// 				case 'images_name1':
-		// 				case 'old_image_name1':
-		// 					if(file_exists($good_directory_name . '/' . $value))
-		// 						unlink($good_directory_name . '/' . $value);
-		// 					$images_name['image1']['name'] = $value['name'];
-		// 					if(isset($value['main']) && $value['main'] === '1')
-		// 						$images_name['image1']['main'] = $value['main'];
-		// 					move_uploaded_file($value['tmp_name'], $good_directory_name . '/' . $value['name']);
-		// 					unset($this->request->data['Good'][$key]);
-		// 					break;
-		// 				case 'images_name2':
-		// 				case 'old_image_name2':
-		// 					if(file_exists($good_directory_name . '/' . $value))
-		// 						unlink($good_directory_name . '/' . $value);
-		// 					$images_name['image2']['name'] = $value['name'];
-		// 					if(isset($value['main']) && $value['main'] === '1')
-		// 						$images_name['image2']['main'] = $value['main'];
-		// 					move_uploaded_file($value['tmp_name'], $good_directory_name . '/' . $value['name']);
-		// 					unset($this->request->data['Good'][$key]);
-		// 					break;
-		// 				case 'images_name3':
-		// 				case 'old_image_name3':
-		// 					if(file_exists($good_directory_name . '/' . $value))
-		// 						unlink($good_directory_name . '/' . $value);
-		// 					$images_name['image3']['name'] = $value['name'];
-		// 					if(isset($value['main']) && $value['main'] === '1')
-		// 						$images_name['image3']['main'] = $value['main'];
-		// 					move_uploaded_file($value['tmp_name'], $good_directory_name . '/' . $value['name']);
-		// 					unset($this->request->data['Good'][$key]);
-		// 					break;
-		// 				case 'images_name4':
-		// 				case 'old_image_name4':
-		// 					if(file_exists($good_directory_name . '/' . $value))
-		// 						unlink($good_directory_name . '/' . $value);
-		// 					$images_name['image4']['name'] = $value['name'];
-		// 					if(isset($value['main']) && $value['main'] === '1')
-		// 						$images_name['image4']['main'] = $value['main'];
-		// 					move_uploaded_file($value['tmp_name'], $good_directory_name . '/' . $value['name']);
-		// 					unset($this->request->data['Good'][$key]);
-		// 					break;
-		// 			}
-		// 		endforeach;
-		// 		$this->request->data['Good']['images_name'] = serialize($images_name);
-		// 		die("STOP DONT SAVE IT");
-		// 		if($this->Good->save($this->request->data)){
-		// 			$this->Session->setFlash("Done", 'flash_custom', array('class' => 'alert'));
-		// 			$this->redirect(array('controller' => 'admins', 'action' => 'index'));
-		// 		}
-		// 	}
-		// }
+		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\
+		//			this method query do not work correctly					\\
+		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\
+
+		$this->layout = NULL;
+		$this->autoRender = false;
+		$this->Product->id = $id;
+		$productFormDataArray = array();
+		if($this->request->is('GET') && $this->request->data){
+			$productFormDataArray['Product']['product_name'] = $this->request->data['name'];
+			$productFormDataArray['Product']['product_cost'] = $this->request->data['cost'];
+			$productFormDataArray['Product']['product_category'] = $this->request->data['category'];
+			$productFormDataArray['Product']['product_description'] = $this->request->data['description'];
+			$productFormDataArray['Product']['product_published'] = $this->request->data['published'];	
+			$query = "update products set 'product_name' = " . $this->request->data['name'] . ", 'product_cost' = " . $this->request->data['cost'] . " ., 'product_category' = " . $this->request->data['category'] . ", 'product_description' = " . $this->request->data['description'] . ", 'product_published' = " . $this->request->data['published'] . " where 'id' = " . $id;
+			if($this->query($query)){
+				return "$query";
+			}else{
+				return "hello";
+			}
+			// if($this->Product->save($productFormDataArray)){
+			// 	$this->layout = NULL;
+			// 	$this->autoRender = false;
+			// 	return true;
+			// } else {
+			// 	return false;
+			// }
+		}		
 	}
 
-	public function admin_delete(){
+	public function admin_edit ($id = null) {
+		App::import('Controller', 'Productimages');
+		$Productimages = new ProductimagesController;
+		$Productimages->constructClasses();
 
+		$this->Product->id = $id;
+		if ($this->request->is('get')) {
+			$this->request->data = $this->Product->read();
+			$Productimages->admin_getimage($id);
+		} else {
+			if ($this->Product->save($this->request->data)) {
+				$this->Session->setFlash('Your post has been updated.');
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash('Unable to update your post.');
+			}
+		}
+	}
+
+	public function admin_delete($id){
+		$this->loadModel('Productimage');
+		if($this->request->is('GET') && isset($id)) {
+			if($this->Product->delete($id)){
+				if($this->Productimage->deleteAll(array('productimages_productId' => $id), $cascade = true, $callbacks = false)){
+					$this->Session->setFlash("Product '". $id ."' Deleted.", 'flash_custom', array('class' => 'alert'));
+					$this->redirect(array('controller' => 'admins', 'action' => 'index'));
+				}
+			}
+		}
 	}
 }
 

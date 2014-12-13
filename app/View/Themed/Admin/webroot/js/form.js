@@ -58,6 +58,10 @@ $(document).ready(function() {
 		$("#products-add-form-container").hide();
 	});
 	$("#products-add-form-button").click(function (){
+		$("#ProductAddForm")[0].reset();
+		$("#product-images-preview-container").html(' ');
+		$('#product-add-form-upload-images').remove();
+		$('#save-product-before-upload-images-button').remove();
 		$("#products-add-form-container").show();
 		$(".main-slideshow-content-form").hide();
 		$("#products-list-form-container").hide();
@@ -71,20 +75,83 @@ $(document).ready(function() {
 		$("#products-list-form-container").hide();
 	});
 
-	$("#ProductName").change(function (){
-		if($("#ProductName").val() !== ""){	
-			if($("#product-add-form-upload-images").html() === undefined)
-				$("#products-add-form-images-input").append('<button type="button" data-toggle="modal" id="product-add-form-upload-images" data-target="#products-upload-form-modal" class="btn btn-warning">Upload Images</button>');
-			$("#ProductimageDirectoryname").val( $("#ProductName").val() );
+	$("#ProductProductName").change(function (){
+		if($("#ProductProductName").val() !== ""){
+			if($("#ProductProductName").data('flag') === 0 && $("#save-product-before-upload-images-button").html() === undefined){
+				$("#products-add-form-images-input").append('<button type="button" id="save-product-before-upload-images-button" onclick="saveProductBeforeUploadImages();" class="btn btn-danger">Save Then Upload Images</button>');
+			} else if($("#ProductProductName").data('flag') === 1 && $("#product-add-form-upload-images").html() === undefined) {
+				$("#products-add-form-images-input").append('<button type="button" data-toggle="modal" onclick="updateProductFormData();" id="product-add-form-upload-images" data-target="#products-upload-form-modal" class="btn btn-warning">Upload Images</button>');
+			}
+			$("#ProductimageDirectoryname").val( $("#ProductProductName").val() );
 		} else{
 			$('#product-add-form-upload-images').remove();
+			$('#save-product-before-upload-images-button').remove();
 		}
 	});
-	$("#product-images-upload-button").click(function (){
+
+	$("#product-images-modal-upload-button").click(function (){
+		// $("#ProductimageAddForm")[0].reset();
 		$("#products-upload-form-modal").modal('hide');
 	});
 	
+	// product add form data save
+	$("#ProductAddForm").submit(function (event){
+		event.preventDefault();
+		var published = ($("#ProductProductPublished").prop('checked') === true) ? 1 : 0;
+		var params = {
+			category : $("#ProductProductCategory").val(),
+			name : $("#ProductProductName").val(),
+			cost : $("#ProductProductCost").val(),
+			description : $("#ProductProductDescription").val(),
+			published : published
+		}
+		$.post('/admin/products/add', params, function (data, status) {
+			if(status === 'success'){
+				if($("#ProductProductName").data('close') === 1){
+					$("#ProductProductName").data('close', 0);
+					$("#ProductProductName").data('flag', 0);
+					$("#products-add-form-container").hide();
+					return true;	
+				}else{
+					// alert("'Product Add form data', saved successfully");
+					$("#ProductProductName").data('flag', 1);
+					$("#ProductProductName").attr('data-id', data);
+					$("#ProductimageProductid").val(data);
+					$("#save-product-before-upload-images-button").remove();
+					if($("#ProductProductName").data('flag') === 1 && $("#product-add-form-upload-images").html() === undefined)
+						$("#products-add-form-images-input").append('<button type="button" data-toggle="modal" onclick="updateProductFormData();" id="product-add-form-upload-images" data-target="#products-upload-form-modal" class="btn btn-warning">Upload Images</button>');
+					$("#product-add-form-upload-images").click();
+				}
+			} else{
+				alert("'Product Add form data', ERROR! :(");
+			}
+		});
+	});
+	$("#add-product-close-button").click(function (event){
+		event.preventDefault();
+		if($("#ProductProductName").data('flag') === 1){
+			updateProductFormData();
+			$("#ProductProductName").data('close', 0);
+			$("#ProductProductName").data('flag', 0);
+			$("#products-add-form-container").hide();
+		} else {
+			$("#ProductProductName").attr('data-close', 1);
+			$("#ProductProductName").data('close', 1);
+			saveProductBeforeUploadImages();
+		}
+	});
 	/*** END products add form***/
+
+	/*** START product edit form ***/
+		$("#modal-edit-form-upload-image-button").click(function (){
+			$("#products-upload-edit-form-modal").modal('hide');
+		});
+
+		$("#product-edit-form-upload-images").click(function (){
+			$("#ProductimageDirectoryname").val( $("#ProductProductName").val() );
+			$("#ProductimageProductid").val( $("#ProductProductName").data('productid') );
+		});
+	/*** END product edit form ***/
 
 	/*** START slideshow add form***/
 	$("#mainSlideshowForm").click(function (){
@@ -115,5 +182,23 @@ function deleteImage(id){
 			$("#imgbox_" + id).remove();
 		}
 	});
-	
+}
+function saveProductBeforeUploadImages (){
+	$("#add-product-save-button").click();
+}
+function updateProductFormData(){
+	var id = $("#ProductProductName").data('id');
+	if(id !== undefined){
+		var published = ($("#ProductProductPublished").prop('checked') === true) ? 1 : 0;
+		var params = {
+			category : $("#ProductProductCategory").val(),
+			name : $("#ProductProductName").val(),
+			cost : $("#ProductProductCost").val(),
+			description : $("#ProductProductDescription").val(),
+			published : published
+		}
+		$.post('/admin/products/update/' + id, params, function (data, status) {
+			console.log(data, status);
+		});
+	}
 }

@@ -17,6 +17,7 @@ class ProductimagesController extends AppController{
 			$this->request->data['Productimage']['productimages_directoryName'] = $product_directory_name;
 			$this->request->data['Productimage']['productimages_name'] = $this->request->data['Productimage']['image']['name'];
 			$this->request->data['Productimage']['productimages_isMain'] = $this->request->data['Productimage']['isMain'];
+			$this->request->data['Productimage']['productimages_productId'] = $this->request->data['Productimage']['productid'];
 			$tmpName = $this->request->data['Productimage']['image']['tmp_name'];
 			move_uploaded_file($tmpName, $product_directory_address . '/' . $this->request->data['Productimage']['image']['name']);
 			unset($this->request->data['Productimage']['image']);
@@ -24,14 +25,14 @@ class ProductimagesController extends AppController{
 			$this->loadModel('Productimage');
 			if($this->Productimage->save($this->request->data)){
 				// $this->Session->setFlash("Done", 'flash_custom', array('class' => 'alert'));
-				$this->redirect(array('controller' => 'productimages', 'action' => 'admin_getimage', $product_directory_name));
+				$this->redirect(array('controller' => 'productimages', 'action' => 'admin_getimage', $this->request->data['Productimage']['productid']));
 			}
 		}
 	}
 
 	public function admin_getimage($id){
 		$this->loadModel('Productimage');
-		$imageinfo = $this->Productimage->find('all', array('conditions' => array("Productimage.productimages_directoryName" => $id)));
+		$imageinfo = $this->Productimage->find('all', array('conditions' => array("Productimage.productimages_productId" => $id)));
 		echo '<script>window.parent.showImages(\''.json_encode($imageinfo).'\'); </script>';
 	}
 

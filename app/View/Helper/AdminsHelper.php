@@ -153,21 +153,23 @@
 							<div class="panel-body">'.
 								$this->Form->create("Product", array("action" => "add", "method" => "post", "type" => "file", "role" => "form", "class" => "validate")).
 								'<div class="form-group" id="products-add-form-images-input">'.
-									$this->Form->input('Product.category', array("label" => false, "type" => "select", "options" => $options, "class" => "validate[required] form-control placeholder")).
+									$this->Form->input('product_category', array("label" => false, "type" => "select", "options" => $options, "class" => "validate[required] form-control placeholder")).
 									'<br>'.
-									$this->Form->input("Product.name", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "Name")).
-									$this->Form->input("Product.cost", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "$1000")).
-									$this->Form->input("Product.description", array("label" => false, "type" => "textarea", "class" => "validate[required] form-control placeholder", "placeholder" => "Description")).
+									$this->Form->input("product_name", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "Name", "data-flag" => "0")).
+									$this->Form->input("product_cost", array("label" => false, "type" => "text", "class" => "validate[required] form-control placeholder", "placeholder" => "$1000")).
+									$this->Form->input("product_description", array("label" => false, "type" => "textarea", "class" => "validate[required] form-control placeholder", "placeholder" => "Description")).
 									'<div class="checkbox">
-										<label>' .
+										<label style="margin-left:15px;">' .
 											$this->Form->input('product_published', array("label" => "Published", "type" => "checkbox", "style" => "margin-top:0px;")) .
 										'</label>
-									</div>							
+									</div>
 									<div class="row" id="product-images-preview-container"></div>
 								</div>
 							</div>	
 							<div class="panel-footer">'.
-									$this->Form->end("Save", array("class" => "btn btn-success green", "type" => "submit", "escape" => true, 'formnovalidate' => false)).
+									$this->Form->button("Save", array("class" => "btn btn-success green", "id" => "add-product-save-button", "type" => "submit", "escape" => true, 'formnovalidate' => false, 'style' => 'display:none;')).
+									$this->Form->button("Save", array("class" => "btn btn-success green", "id" => "add-product-close-button")).
+									$this->Form->end().
 							'</div>	
 						</div>	
 					</div>	
@@ -194,13 +196,14 @@
 									</div>' .
 
 									$this->Form->input("directoryname", array("label" => false, "type" => "hidden")) .
+									$this->Form->input("productid", array("label" => false, "type" => "hidden")) .
 								'</div>
 								<div class="modal-footer">
 									<span class="pull-right">' .
 										$this->Form->button("Close", array("class" => "btn btn-default", "type" => "button", "data-dismiss" => "modal")) .
 									'</span>
 									<span class="pull-left">' .
-										$this->Form->button("Upload", array("class" => "btn btn-success", "id" => "product-images-upload-button", "type" => "submit", "escape" => true, "formnovalidate" => false)) .
+										$this->Form->button("Upload", array("class" => "btn btn-success", "id" => "product-images-modal-upload-button", "type" => "submit", "escape" => true, "formnovalidate" => false)) .
 										$this->Form->end().
 									'</span>
 								</div>
@@ -209,7 +212,7 @@
 					</div>
 				</div>';	
 		}
-		public function productlist($productsData) {
+		public function productlist($productsData = NULL) {
 			echo '<div class="row" id="products-list-form-container" style="display:none;">
 					<div class="col-md-12">
 						<div class="panel panel-default">
@@ -255,8 +258,8 @@
 													'<td class="image-td-width">' . $imgurl . '</td>'.
 													'<td>
 														<div class="btn-group" role="group">'
-														. $this->Html->Link("Edit", array("controller" => "Products", "action" => "update", $data['Product']['id']), array("class" => "btn btn-success", "style" => "color:white;")) .
-														  $this->Html->Link("Delete", array("controller" => "Products", "action" => "update"), array("class" => "btn btn-danger", "style" => "color:white;")) .
+														. $this->Html->Link("Edit", array("controller" => "Products", "action" => "edit", $data['Product']['id']), array("class" => "btn btn-success", "style" => "color:white;")) .
+														  $this->Html->Link("Delete", array("controller" => "Products", "action" => "delete", $data['Product']['id']), array("confirm" => "Are you sure you wish to delete this product?", "class" => "btn btn-danger", "style" => "color:white;")) .
 														'</div>
 													</td>'.
 												'</tr>';

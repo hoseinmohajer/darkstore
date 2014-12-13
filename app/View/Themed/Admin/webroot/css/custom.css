@@ -191,9 +191,6 @@ section.alert{
 	opacity: 0.5;
 	cursor: pointer;
 }
-/*.product-images-box i{
-	display: none;
+.radio label, .checkbox label{
+	margin-left: 15px;
 }
-.product-images-box:hover{
-	display: block;
-}*/
