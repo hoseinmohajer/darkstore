@@ -4,6 +4,21 @@
 	z-index: 2000;
 	height: 27px;
 	background-color: #f0f0f0;
+	overflow-x: auto;
+	overflow-y: hidden;
+	width: 100% !important;
+}
+.fixed-menu{
+	overflow-x: auto;
+	overflow-y: hidden;
+	width: 100% !important;
+	height: 27px;
+}
+.purchase-fixed-menu{
+	overflow-x: auto;
+	overflow-y: hidden;
+	width: 100% !important;
+	height: 27px;
 }
 .portfolio-item:hover .portfolio-item-content > .test{
 	display: block !important;
@@ -12,10 +27,11 @@
 .portfolio-item:hover .portfolio-item-content > .test2{
 	display: none;
 }
-/*#topcontrol{
-	position: fixed !important;
-	bottom: 0px !important;
-	right: 7px !important;
-	opacity: 1 !important;
-	cursor: pointer !important;
-}*/
+.lightbox-title{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.product-detail-title-bar{
+	margin-top: 10px;
+}

@@ -1,6 +1,17 @@
-<?php echo $this->Vitrins->topmenu('home');?>
-<?php echo @$this->Vitrins->slideshow($slideshowData);?>
-<div class="twelve columns fixed-menu"> 
+<?php echo $this->Vitrins->topmenu('products');?>
+<div class="page-header ph-bg1">
+	<div  class="clickable variable-sizes clearfix">
+	  <div class="twelve columns">
+		<p class="page-title">Products</p>
+		<ul class="breadcrumbs">
+			<li><a href="/">Home</a></li>
+			<li><a href="javascript:void(0);">Products</a></li>
+		</ul>
+	  </div>
+	</div>
+</div>
+<div  class="product-detail-title-bar"></div>
+<div class="twelve columns purchase-fixed-menu"> 
   <!-- Portfolio Navigation -->
 	<section id="options">
 		<ul id="filters" class="option-set left button-group">
@@ -28,14 +39,15 @@
 </div>
 
 
-<!-- <hr/> -->
-<br/><br/><br/>
-
-
+		<!-- <hr/> -->
+		<br/><br/><br/>
 <div id="container" class="clickable variable-sizes clearfix"> 
-	<!-- product list-->
-	<?php echo @$this->Vitrins->getProduct($productData);?>
-</div>
+		<!-- product list-->
+		<?php echo @$this->Vitrins->getProduct($productData);?>
+	  </div>
+
+
+
 
 <!-- FOOTER -->
 <div class="container footer">

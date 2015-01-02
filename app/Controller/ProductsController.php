@@ -25,53 +25,42 @@ class ProductsController extends AppController{
 		}
 	}
 
-
 	public function admin_update($id){
-		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\
-		//			this method query do not work correctly					\\
-		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\
-
 		$this->layout = NULL;
 		$this->autoRender = false;
 		$this->Product->id = $id;
 		$productFormDataArray = array();
-		if($this->request->is('GET') && $this->request->data){
+		if($this->request->is('POST') && $this->request->data){
 			$productFormDataArray['Product']['product_name'] = $this->request->data['name'];
 			$productFormDataArray['Product']['product_cost'] = $this->request->data['cost'];
 			$productFormDataArray['Product']['product_category'] = $this->request->data['category'];
 			$productFormDataArray['Product']['product_description'] = $this->request->data['description'];
 			$productFormDataArray['Product']['product_published'] = $this->request->data['published'];	
-			$query = "update products set 'product_name' = " . $this->request->data['name'] . ", 'product_cost' = " . $this->request->data['cost'] . " ., 'product_category' = " . $this->request->data['category'] . ", 'product_description' = " . $this->request->data['description'] . ", 'product_published' = " . $this->request->data['published'] . " where 'id' = " . $id;
-			if($this->query($query)){
-				return "$query";
+			$query = "update products set `product_name` = '" . $this->request->data['name'] . "', `product_cost` = '" . $this->request->data['cost'] . "' , `product_category` = '" . $this->request->data['category'] . "', `product_description` = '" . $this->request->data['description'] . "', `product_published` = '" . $this->request->data['published'] . "' where `id` = " . $id;
+			if($this->Product->query($query)){
+				return true;
 			}else{
-				return "hello";
+				return false;
 			}
-			// if($this->Product->save($productFormDataArray)){
-			// 	$this->layout = NULL;
-			// 	$this->autoRender = false;
-			// 	return true;
-			// } else {
-			// 	return false;
-			// }
 		}		
 	}
 
 	public function admin_edit ($id = null) {
-		App::import('Controller', 'Productimages');
-		$Productimages = new ProductimagesController;
-		$Productimages->constructClasses();
-
+		$this->layout = NULL;
+		$this->autoRender = false;
 		$this->Product->id = $id;
 		if ($this->request->is('get')) {
-			$this->request->data = $this->Product->read();
-			$Productimages->admin_getimage($id);
+			$this->loadModel('Productimage');
+			$imageinfo = $this->Productimage->find('all', array('conditions' => array("Productimage.productimages_productId" => $id)));
+			$this->Product->recursive = -1;
+			$_return['editData'] = json_encode($this->Product->read());
+			$_return['imageInfo'] = json_encode($imageinfo);
+			return json_encode($_return);
 		} else {
 			if ($this->Product->save($this->request->data)) {
-				$this->Session->setFlash('Your post has been updated.');
-				$this->redirect(array('action' => 'index'));
+				return true;
 			} else {
-				$this->Session->setFlash('Unable to update your post.');
+				return false;
 			}
 		}
 	}

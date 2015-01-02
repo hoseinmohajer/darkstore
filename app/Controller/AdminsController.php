@@ -9,7 +9,8 @@ class AdminsController extends AppController{
 	public $helpers = array('Html', 'Form', 'Session', 'Admins');
 
 	public function admin_index(){
-		$this->_updateslideshow();
+		// $this->_updateslideshow();
+		$this->_slideshowlist();
 		$this->_updateproduct();
 	}
 
@@ -17,11 +18,20 @@ class AdminsController extends AppController{
 		$this->loadModel('Product');
 	}
 
-	function _updateslideshow() {
+	// function _updateslideshow() {
+	// 	$this->loadModel('Slideshow');
+	// 	$slideshowEditFormData = $this->Slideshow->find('all');
+	// 	if($slideshowEditFormData){
+	// 		$this->set('slideshowEditFormData', $slideshowEditFormData);
+	// 	}
+	// }
+
+	private function _slideshowlist() {
 		$this->loadModel('Slideshow');
-		$slideshowEditFormData = $this->Slideshow->find('all');
-		if($slideshowEditFormData){
-			$this->set('slideshowEditFormData', $slideshowEditFormData);
+		if($this->Slideshow->find('all')){
+			$this->set('slideshowData', $this->Slideshow->find('all'));
+		} else {
+			$this->set('slideshowData', '');
 		}
 	}
 
@@ -35,6 +45,8 @@ class AdminsController extends AppController{
 		$this->loadModel('Product');
 		if($this->Product->find('all')) {
 			$this->set('productsData', $this->Product->find('all'));
+		}else{
+			$this->set('productsData', '');
 		}
 	}
 }
