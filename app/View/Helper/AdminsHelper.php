@@ -374,7 +374,7 @@
 						</h3>
 					</div>
 					<div class="clear-fixed"></div>
-					<div class="panel-body">
+					<div class="panel-body" style="height: 500px; overflow-y: scroll;">
 						' . $img . '
 					</div>
 				</div>';
