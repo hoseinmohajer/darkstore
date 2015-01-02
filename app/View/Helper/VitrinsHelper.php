@@ -3,15 +3,16 @@
 
 	class VitrinsHelper extends AppHelper {
 		public $helpers = array('Html', 'Form', 'Session');
+		
 		public function topmenu($activeStyleClass){
 			$homeActiveClass = '';
-			$goodsActiveClass = '';
+			$productsActiveClass = '';
 			switch ($activeStyleClass) {
 				case 'home':
 					$homeActiveClass = 'active';
 					break;
-				case 'goods':
-					$goodsActiveClass = 'active';
+				case 'products':
+					$productsActiveClass = 'active';
 					break;
 				
 				default:
@@ -33,12 +34,12 @@
 						        </ul>
 								<section>
 									<ul class='right'>
-										<li class='has-dropdown'>" . $this->Html->Link('Goods', array('action' => 'goods'), array('class' => $goodsActiveClass)) . "
+										<li class='has-dropdown'>" . $this->Html->Link('Products', array('action' => 'products'), array('class' => $productsActiveClass)) . "
 											<ul class='dropdown'>
-												<li><a href='javascript:void(0);'>Goods1</a></li>
-												<li><a href='javascript:void(0);'>Goods2</a></li>
-												<li><a href='javascript:void(0);'>Goods3</a></li>
-												<li><a href='javascript:void(0);'>Goods4</a></li>
+												<li><a href='javascript:void(0);'>Product1</a></li>
+												<li><a href='javascript:void(0);'>Product2</a></li>
+												<li><a href='javascript:void(0);'>Product3</a></li>
+												<li><a href='javascript:void(0);'>Product4</a></li>
 											</ul>
 										</li>
 										<li><a href='javascript:void(0);'>Contact</a></li>
@@ -51,11 +52,13 @@
 						<div class='shadow-down'></div>
 					</div>";
 		}
+
 		public function _logo(){
 			return "<div class='three columns'>
 						" . $this->Html->Link('DarkStore', array('action' => 'index'), array('id' => 'logo', 'title' => 'DarkStore')) . "
 					</div>";
 		}
+
 		public function slideshow($slideshowData) {
 			$slideshowContentType1 = '';
 			$slideshowContentType2 = '';
@@ -270,5 +273,103 @@
 					</div>
 				</div>';
 		}
+
+		public function getProduct($data){
+			foreach ($data as $key => $value) {
+				if($value["Product"]["product_published"] === '1'){
+					foreach ($value["Productimage"] as $k => $v) {
+						if($v["productimages_isMain"] === '1'){
+							echo '<div class="three columns element ' . $value["Product"]["product_category"] . '">
+								<div class="portfolio-item">
+									<div class="portfolio-item-image image-overlay">
+										<a class="titan-lb" data-titan-group="gallery" href="'. $v["productimages_imagesDirectoryAddress"]. "/" .$v["productimages_name"] .'" title="' . $value["Product"]["product_description"] . '">
+											<img src="'. $v["productimages_imagesDirectoryAddress"]. "/" .$v["productimages_name"] .'" alt="' . $v["productimages_name"] . '" />
+											<span class="overlay-icon item-zoom"></span>
+										</a>
+									</div>
+									<div class="portfolio-item-content">' .
+										$this->Html->link("BUY", "/vitrins/product_details/" . $value["Product"]["id"], array("class" => "success button test", "id" => "test", "style" => "display:none;")) .
+										'<h5 class="title test2">
+											<a href="javascript:void(0);">' . $value["Product"]["product_name"] . '</a>
+										</h5>
+								  		<p class="test2">Cost: $' . $value["Product"]["product_cost"] . '</p>
+									</div>
+								</div>
+							</div>';
+						}
+					}
+				}
+			}
+		}
+
+		public function productDetail($data) {
+
+			$slideshowImagesMarkup = '';
+			foreach ($data as $key => $value) {
+				$productDescription = $data[0]["Product"]["product_description"];
+				$productNmae = $data[0]["Product"]["product_name"];
+				$productCost = $data[0]["Product"]["product_cost"];
+				foreach ($value["Productimage"] as $k => $v) {
+					$imgHref = $v["productimages_imagesDirectoryAddress"] . "/" . $v["productimages_name"];
+					$slideshowImagesMarkup .= '<article><img src="' . $imgHref . '" alt="' . $v["productimages_name"] . '"></article>';
+				}
+			}
+			echo '<div class="six columns">
+					<h1>' . $productNmae . '</h1>
+					</div>
+					<div class="six columns">
+						<div class="project-pagination">
+							<a title="Previous Project" href="#" class="previous-proj"></a>
+							<a title="View All Projects" href="../products" class="all-proj"></a>
+							<a title="Next Project" href="#" class="next-proj"></a>
+						</div>
+					</div>
+					<div class="twelve columns">
+						<div class="divider4"></div>
+					</div>
+					<div class="eight columns"> 
+						<div class="wmuSlider example2">
+							<div class="wmuSliderWrapper">' . $slideshowImagesMarkup . '</div>
+						</div>
+					</div>
+					<div class="four columns">
+						<h1>Description</h1>
+						<p>' . $productDescription . '</p>
+						<h1>$ ' . $productCost . '</h1>
+						<div class="clear"></div>
+						<a href="javascript:void(0);" class="large button"> Purchase</a>
+					</div>';
+		}
+
+		public function subfooter() {
+			return '<div  class="clickable variable-sizes clearfix">
+						<div class="six columns">
+							<p> &#169; Copyright - DarkStore - Developed by <a href="mailto:hosein.mohajer@gmail.com?">HoseinMohajer</a> </p>
+						</div>
+						<div class="six columns">
+							<div class="large-social-block">
+								<a href="javascript:void(0);">
+									<span class="social dribbble"></span>
+								</a>
+								<a href="javascript:void(0);">
+									<span class="social flickr"></span>
+								</a>
+								<a href="javascript:void(0);">
+									<span class="social linkedin"></span>
+								</a>
+								<a href="mailto:hosein.mohajer@gmail.com?">
+									<span class="social google"></span>
+								</a> 
+								<a href="javascript:void(0);">
+									<span class="social twitter"></span>
+								</a> 
+								<a href="javascript:void(0);">
+									<span class="social facebook"></span>
+								</a>
+							</div>
+						</div>
+					</div>';
+		}
+
 	}
 ?>

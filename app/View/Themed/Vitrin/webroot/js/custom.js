@@ -16,6 +16,7 @@ $(document).ready(function (){
 			_menuHolder(goodsFixedMenu, 952);
 		}
 	});
+	
 	function _menuHolder (selector, last_position) {
 		if(selector.offset().top <= $(window).scrollTop()){
 			selector.addClass('fixed');
@@ -31,5 +32,21 @@ $(document).ready(function (){
 		touch: true,
 		animation: 'slide'
 	});
+
+
+	/*** START Filter scripts***/
+	$(".myfilter").click(function (){
+		var filtervalue = $(this).data("filtervalue");
+		for (var i = 1; i <= 10; i++) {
+			if(filtervalue === i || filtervalue === '*'){
+				$('.' + i).show('slow');
+				$(".myfilter").removeClass("selected");
+				$(this).addClass("selected");
+			}else {
+				$('.' + i).hide('slow');
+			}
+		};
+	});
+	/*** END Filter scripts***/
 
 });
