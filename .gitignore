@@ -1,5 +1,3 @@
 
 app/tmp/cache/*
 app/tmp/logs/error.log
-app/webroot/files/mainslideshow/
-app/webroot/files/productsimage/
