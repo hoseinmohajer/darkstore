@@ -287,12 +287,22 @@
 											<span class="overlay-icon item-zoom"></span>
 										</a>
 									</div>
-									<div class="portfolio-item-content">' .
-										$this->Html->link("BUY", "/vitrins/product_details/" . $value["Product"]["id"], array("class" => "success button test", "id" => "test", "style" => "display:none;")) .
-										'<h5 class="title test2">
+									<div class="portfolio-item-content">
+									<div class="product-items-button">
+										<span style="float:right;">
+											<a href="/vitrins/product_details/' . $value["Product"]["id"] . '" class="success button" id='. $value["Product"]["id"] . ' style="display:none;">BUY</a>
+										</span>
+										<span style="float:left;">
+											<a href="javascript:void(0);" class="product-itemes-shopping-cart" data-flag="0" style="display:none;">
+												<img id="' . $value["Product"]["id"] . '" src="/theme/Vitrin/images/icons/shopping-link-24.png">
+											</a>
+										</span>
+									</div>
+										<h5 class="title product-items-info">
 											<a href="javascript:void(0);">' . $value["Product"]["product_name"] . '</a>
 										</h5>
-								  		<p class="test2">Cost: $' . $value["Product"]["product_cost"] . '</p>
+								  		<p class="product-items-info">Cost: $' . $value["Product"]["product_cost"] . '</p>
+								  		<img style="float:left; display:none;" id="' . $value["Product"]["id"] . '_product-that-added-to-shopping-cart" src="/theme/Vitrin/images/icons/shopping-star-16.png">
 									</div>
 								</div>
 							</div>';
@@ -370,6 +380,5 @@
 						</div>
 					</div>';
 		}
-
 	}
 ?>

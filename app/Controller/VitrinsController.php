@@ -32,6 +32,38 @@ class VitrinsController extends AppController{
 		$this->index();
 	}
 
+	public function shopping_cart() {
+		$this->layout = NULL;
+		$this->autoRender = false;
+		$this->loadModel('Product');
+		$shoppingCartItemes = array();
+		if($this->request->is('post')){
+			$ids = $this->request->data;
+			foreach ($ids as $key => $value) {
+				foreach ($value as $k => $id) {
+					$data = $this->Product->find('all', array("fields" => "product_cost, product_name, product_description", "conditions" => array("Product.id" => $id)));
+					foreach ($data as $kee => $valuee) {
+						foreach ($valuee as $kkee => $vvalue) {
+							foreach ($vvalue as $k1 => $v1) {
+								$shoppingCartItemes[$id]["id"] = $id;
+								if($k1 === "product_description")
+									$shoppingCartItemes[$id]["productDescription"] = $v1;
+								if($k1 === "product_cost")
+									$shoppingCartItemes[$id]["productCost"] = $v1;
+								if($k1 === "product_name")
+									$shoppingCartItemes[$id]["productName"] = $v1;
+								if(isset($v1["productimages_isMain"]) && $v1["productimages_isMain"] === "1"){
+									$shoppingCartItemes[$id]["imgAddress"] = $v1["productimages_imagesDirectoryAddress"] . "/" . $v1["productimages_name"];
+								}
+							}
+						}
+					}
+				}
+			}
+			return json_encode($shoppingCartItemes);
+		}
+	}
+
 	private function _getproduct() {
 		$this->loadModel("Product");
 		$this->set('productData', $this->Product->find('all'));

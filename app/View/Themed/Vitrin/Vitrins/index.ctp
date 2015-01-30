@@ -17,8 +17,8 @@
 			<li><a href="javascript:void(0);" data-filtervalue="10" class="myfilter button small">Cat10</a></li>
 		</ul>
 		<ul id="filters" class="option-set right button-group">
+			<li><a href="javascript:void(0);" class="button small shopping-basket-itemes" style="display:none;" id="show-shopping-cart-content"></a></li>
 			<li><a href="javascript:void(0);" class="button small">Menu B</a></li>
-			<li><a href="javascript:void(0);" class="button small">Menu A</a></li>
 			<!-- <li><a href="javascript:void(0);" class="button small">About Us</a></li> -->
 			<!-- <li><a href="javascript:void(0);" class="button small">Cuntact Us</a></li> -->
 			<li><a href="/" class="button small">HOME</a></li>
@@ -27,6 +27,13 @@
   <!-- End Portfolio Navigation --> 
 </div>
 
+
+<div class="messagepop pop">
+	<a class="close" href="javascript:void(0);"><b>X</b></a>
+	<br>
+    <div class="shopping-cart-container">
+    </div>
+</div>
 
 <!-- <hr/> -->
 <br/><br/><br/>
