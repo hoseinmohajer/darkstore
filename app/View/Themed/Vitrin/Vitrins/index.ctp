@@ -27,7 +27,7 @@
   <!-- End Portfolio Navigation --> 
 </div>
 
-
+<div class="message-backdrop"></div>
 <div class="messagepop pop">
 	<a class="close" href="javascript:void(0);"><b>X</b></a>
 	<br>

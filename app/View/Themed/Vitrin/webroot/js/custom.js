@@ -120,6 +120,8 @@ $(document).ready(function (){
 
 	/*** START My pop up box ***/
 	function deselect(e) {
+		$('.message-backdrop').hide();
+		$('body').removeClass('message-backdrop-body');
 		$('.pop').slideFadeToggle(function() {
 			e.removeClass('selected');
 		});    
@@ -130,6 +132,8 @@ $(document).ready(function (){
 			if($(this).hasClass('selected')) {
 				deselect($(this));               
 			} else {
+				$('.message-backdrop').show();
+				$('body').addClass('message-backdrop-body');
 				$(this).addClass('selected');
 				$('.pop').slideFadeToggle();
 			}

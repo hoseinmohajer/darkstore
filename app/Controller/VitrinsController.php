@@ -9,6 +9,10 @@ class VitrinsController extends AppController{
 	public $helpers = array('Html', 'Form', 'Session', 'Vitrins');
 	
 	public function index(){
+
+		$uid=$this->Session->read('shopping_cart_itemes');
+            debug($uid);
+
 		$this->layout = 'vitrin';
 		$this->set('title_for_layout', 'Home');
 		$this->_slideshow();
@@ -39,6 +43,7 @@ class VitrinsController extends AppController{
 		$shoppingCartItemes = array();
 		if($this->request->is('post')){
 			$ids = $this->request->data;
+			$this->Session->write('shopping_cart_itemes', array($ids));
 			foreach ($ids as $key => $value) {
 				foreach ($value as $k => $id) {
 					$data = $this->Product->find('all', array("fields" => "product_cost, product_name, product_description", "conditions" => array("Product.id" => $id)));
