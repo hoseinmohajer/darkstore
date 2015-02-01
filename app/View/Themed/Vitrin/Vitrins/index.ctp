@@ -33,6 +33,9 @@
 	<br>
     <div class="shopping-cart-container">
     </div>
+    <div class="shopping-cart-footer">
+    	
+    </div>
 </div>
 
 <!-- <hr/> -->

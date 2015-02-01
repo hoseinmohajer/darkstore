@@ -77,12 +77,14 @@ $(document).ready(function (){
 	});
 
 	$(".shopping-basket-itemes").click(function (){
+		
 		var params = {
 			itemes: ids
 		}
 		$.post("/Vitrins/shopping_cart", params, function (data, status){
 			data = $.parseJSON(data);
 			$(".shopping-cart-container").html('');
+			$(".shopping-cart-footer").html('');
 			var totalCost = 0;
 			$.each(data, function (key, value) {
 				totalCost += parseInt(value.productCost);
@@ -105,7 +107,7 @@ $(document).ready(function (){
 				'</table>'
 				);
 			});
-			$(".shopping-cart-container").append(
+			$(".shopping-cart-footer").append(
 				'<br><span style="float:left;">' +
 					'<a href="/Vitrins/shopping_cart" style="padding:10px;" class="button">Purchase</a>' +
 				'</span>' +

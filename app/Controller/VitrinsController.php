@@ -69,6 +69,16 @@ class VitrinsController extends AppController{
 		}
 	}
 
+	private function shopping_cart_session_set() {
+		$ids = $this->request->data;
+		debug($ids);
+	}
+
+	private function shopping_cart_session_get() {
+		$ids = $this->request->data;
+		debug($ids);
+	}
+
 	private function _getproduct() {
 		$this->loadModel("Product");
 		$this->set('productData', $this->Product->find('all'));
