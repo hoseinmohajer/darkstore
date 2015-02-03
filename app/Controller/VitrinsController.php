@@ -9,10 +9,6 @@ class VitrinsController extends AppController{
 	public $helpers = array('Html', 'Form', 'Session', 'Vitrins');
 	
 	public function index(){
-
-		$uid=$this->Session->read('shopping_cart_itemes');
-            debug($uid);
-
 		$this->layout = 'vitrin';
 		$this->set('title_for_layout', 'Home');
 		$this->_slideshow();
@@ -41,9 +37,9 @@ class VitrinsController extends AppController{
 		$this->autoRender = false;
 		$this->loadModel('Product');
 		$shoppingCartItemes = array();
-		if($this->request->is('post')){
-			$ids = $this->request->data;
-			$this->Session->write('shopping_cart_itemes', array($ids));
+		$sessionData = $this->Session->read('shopping_cart_itemes')[0];
+		if($sessionData){
+			$ids = $sessionData;
 			foreach ($ids as $key => $value) {
 				foreach ($value as $k => $id) {
 					$data = $this->Product->find('all', array("fields" => "product_cost, product_name, product_description", "conditions" => array("Product.id" => $id)));
@@ -66,17 +62,31 @@ class VitrinsController extends AppController{
 				}
 			}
 			return json_encode($shoppingCartItemes);
+		} else {
+			return false;
 		}
 	}
 
-	private function shopping_cart_session_set() {
+	public function shopping_cart_session_set() {
+		$this->layout = NULL;
+		$this->autoRender = false;	
 		$ids = $this->request->data;
-		debug($ids);
+		if( $this->Session->write('shopping_cart_itemes', array($ids)) ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	private function shopping_cart_session_get() {
-		$ids = $this->request->data;
-		debug($ids);
+	public function shopping_cart_session_get() {
+		$this->layout = NULL;
+		$this->autoRender = false;
+		
+		if(!empty($this->Session->read('shopping_cart_itemes')) && $this->Session->read('shopping_cart_itemes')[0]){
+			return json_encode($this->Session->read('shopping_cart_itemes')[0]["ids"]);
+		} else {
+			return false;
+		}
 	}
 
 	private function _getproduct() {

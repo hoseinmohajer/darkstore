@@ -57,6 +57,6 @@ class AppController extends Controller {
 			$this->layout = 'admin';
 		}
 
-		$this->Auth->allow('admin_signup', 'admin_login', 'admin_logout', 'index', 'product_details', 'products', 'shopping_cart');
+		$this->Auth->allow('admin_signup', 'admin_login', 'admin_logout', 'index', 'product_details', 'products', 'shopping_cart', 'shopping_cart_session_set', 'shopping_cart_session_get');
 	}
 }

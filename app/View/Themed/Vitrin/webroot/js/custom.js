@@ -50,45 +50,106 @@ $(document).ready(function (){
 	/*** END Filter scripts***/
 
 	/*** START Shopping cart script***/
+
+	$.get("/Vitrins/shopping_cart_session_get", function (data, status){
+		if(data.length !== 0 && status === "success"){
+			var sessionData = $.parseJSON(data);
+			if(sessionData.length !== 0){
+				$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + sessionData.length + ")</b>");
+				$(".fixed-menu").find(".shopping-basket-itemes").show();
+			}
+			$.each(sessionData, function (key, value) {
+				var id = value;
+				var ths = $(".product-itemes-shopping-cart").find("#" + id).attr("src", "/theme/Vitrin/images/icons/shopping-star-24.png");
+				$(ths).parent('a').data("flag", 1);
+				$("#" + id + "_product-that-added-to-shopping-cart").show();
+			});
+		} else {
+			return false;
+		}
+	});
+
 	var ids = [];
 	$(".product-itemes-shopping-cart").click(function (){
 		var flag = $(this).data("flag");
 		var id = $( $(this).find("img") ).attr("id");
-
+		var thiz = this;
 		if(flag === 0){
-			$( $(this).find("img") ).attr("src", "/theme/Vitrin/images/icons/shopping-star-24.png");
-			$("#" + id + "_product-that-added-to-shopping-cart").show();
-			ids.push(id);
-			$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
-			$(".fixed-menu").find(".shopping-basket-itemes").show();
-			$(this).data("flag", 1);
+			$.get("/Vitrins/shopping_cart_session_get", function (data, status){
+				if(status === "success"){
+					if(data.length !== 0){
+						var sessionData = $.parseJSON(data);
+						ids = sessionData;
+						ids.push(id);
+						var params = {
+							ids: ids
+						}
+						$.post("/Vitrins/shopping_cart_session_set", params, function (data, status){
+							if(status === "success"){
+								$( $(thiz).find("img") ).attr("src", "/theme/Vitrin/images/icons/shopping-star-24.png");
+								$("#" + id + "_product-that-added-to-shopping-cart").show();
+								$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
+								$(".fixed-menu").find(".shopping-basket-itemes").show();
+								$(thiz).data("flag", 1);
+							} else {
+								return false;
+							}
+						});
+					} else {
+						ids.push(id);
+						var params = {
+							ids: ids
+						}
+						$.post("/Vitrins/shopping_cart_session_set", params, function (data, status){
+							if(status === "success"){
+								$( $(thiz).find("img") ).attr("src", "/theme/Vitrin/images/icons/shopping-star-24.png");
+								$("#" + id + "_product-that-added-to-shopping-cart").show();
+								$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
+								$(".fixed-menu").find(".shopping-basket-itemes").show();
+								$(thiz).data("flag", 1);
+							} else {
+								return false;
+							}
+						});
+					}		
+				}
+			});		
 		} else {
-			$( $(this).find("img") ).attr("src", "/theme/Vitrin/images/icons/shopping-link-24.png");
-			$("#" + id + "_product-that-added-to-shopping-cart").hide();
-			ids.splice( $.inArray(id,ids) ,1 );
-			$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
-			if(ids.length === 0)
-				$(".fixed-menu").find(".shopping-basket-itemes").hide();
-			$(this).data("flag", 0);
+			$.get("/Vitrins/shopping_cart_session_get", function (data, status){
+				if(status === "success"){
+					var sessionData = $.parseJSON(data);
+					sessionData.splice( $.inArray(id,sessionData) ,1 );
+					ids = sessionData;
+					var params = {
+						ids: ids
+					}
+					$.post("/Vitrins/shopping_cart_session_set", params, function (data, status){
+						if(status === "success"){
+							$( $(thiz).find("img") ).attr("src", "/theme/Vitrin/images/icons/shopping-link-24.png");
+							$("#" + id + "_product-that-added-to-shopping-cart").hide();
+							$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
+							if(ids.length === 0)
+								$(".fixed-menu").find(".shopping-basket-itemes").hide();
+							$(thiz).data("flag", 0);
+						} else {
+							return false;
+						}
+					});
+				} else {
+					return false;
+				}
+			});
 		}
-
-
-		console.log(ids);
 	});
 
 	$(".shopping-basket-itemes").click(function (){
-		
-		var params = {
-			itemes: ids
-		}
-		$.post("/Vitrins/shopping_cart", params, function (data, status){
+		$.get("/Vitrins/shopping_cart", function (data, status){
 			data = $.parseJSON(data);
 			$(".shopping-cart-container").html('');
 			$(".shopping-cart-footer").html('');
 			var totalCost = 0;
 			$.each(data, function (key, value) {
 				totalCost += parseInt(value.productCost);
-				console.log(value);
 				$(".shopping-cart-container").append('<table border="1px" width="100%">'+
 					'<tr id="' + value.id + '">'+
 						'<td>'+
@@ -103,6 +164,9 @@ $(document).ready(function (){
 						'<td>'+
 							'<textarea rows="4">' + value.productDescription + '</textarea>'+
 						'</td>'+
+						'<td>'+
+							'<a href="javascript:void();" onclick="removeShoppingItemes(\'' + value.id + '\');">DELETE</a>'+
+						'</td>'+
 					'</tr>	'+
 				'</table>'
 				);
@@ -116,7 +180,7 @@ $(document).ready(function (){
 				'</span>');
 		});
 	});
-
+	
 	/*** END Shopping cart script***/
 
 
@@ -157,8 +221,30 @@ $(document).ready(function (){
 
 
 function removeShoppingItemes(id) {
-	$("#" + id).remove();
-	// '<td>'+
-	// 	'<a href="javascript:void(0);" class="button" style="padding:8px;" onclick="removeShoppingItemes(\'' + value.id + '\');">Delete</a>'+
-	// '</td>'+
+	$.get("/Vitrins/shopping_cart_session_get", function (data, status){
+		if(status === "success"){
+			var thiz = $(".product-itemes-shopping-cart").find("#" + id);
+			var sessionData = $.parseJSON(data);
+			sessionData.splice( $.inArray(id,sessionData) ,1 );
+			ids = sessionData;
+			var params = {
+				ids: ids
+			}
+			$.post("/Vitrins/shopping_cart_session_set", params, function (data, status){
+				if(status === "success"){
+					$(thiz).attr("src", "/theme/Vitrin/images/icons/shopping-link-24.png");
+					$("#" + id + "_product-that-added-to-shopping-cart").hide();
+					$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
+					if(ids.length === 0)
+						$(".fixed-menu").find(".shopping-basket-itemes").hide();
+					$(thiz).parent('a').data("flag", 0);
+					$("#" + id).remove();
+				} else {
+					return false;
+				}
+			});
+		} else {
+			return false;
+		}
+	});
 }

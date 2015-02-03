@@ -18,9 +18,6 @@
 		</ul>
 		<ul id="filters" class="option-set right button-group">
 			<li><a href="javascript:void(0);" class="button small shopping-basket-itemes" style="display:none;" id="show-shopping-cart-content"></a></li>
-			<li><a href="javascript:void(0);" class="button small">Menu B</a></li>
-			<!-- <li><a href="javascript:void(0);" class="button small">About Us</a></li> -->
-			<!-- <li><a href="javascript:void(0);" class="button small">Cuntact Us</a></li> -->
 			<li><a href="/" class="button small">HOME</a></li>
 		</ul>
 	</section>
