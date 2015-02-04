@@ -24,12 +24,15 @@ class VitrinsController extends AppController{
 		$this->layout = 'vitrin';
 		$this->loadModel('Product');
 		if($this->request->is('GET')){
-			$this->set('productDetailPageData', $this->Product->find('all', array('conditions' => array("Product.id" => $id))));
+			$productDetailPageData = $this->Product->find('all', array('conditions' => array("Product.id" => $id)));
+			$this->set('title_for_layout', $productDetailPageData[0]["Product"]["product_name"]);
+			$this->set('productDetailPageData', $productDetailPageData);
 			$this->_recommendedproduct();
 		}
 	}
 	public function products() {
 		$this->index();
+		$this->set('title_for_layout', 'Products');
 	}
 
 	public function shopping_cart() {

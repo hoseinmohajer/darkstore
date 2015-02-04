@@ -117,4 +117,6 @@ label {
 	overflow: hidden;
 	padding-right: 15px;
 }
-
+.shopping-cart-popup-delete-btn{
+	padding-bottom: 4px !important;
+}

@@ -77,41 +77,23 @@ $(document).ready(function (){
 		if(flag === 0){
 			$.get("/Vitrins/shopping_cart_session_get", function (data, status){
 				if(status === "success"){
-					if(data.length !== 0){
-						var sessionData = $.parseJSON(data);
-						ids = sessionData;
-						ids.push(id);
-						var params = {
-							ids: ids
+					var sessionData = $.parseJSON(data);
+					ids = (sessionData !== null && sessionData.length !== 0) ? sessionData : [];
+					ids.push(id);
+					var params = {
+						ids: ids
+					}
+					$.post("/Vitrins/shopping_cart_session_set", params, function (data, status){
+						if(status === "success"){
+							$( $(thiz).find("img") ).attr("src", "/theme/Vitrin/images/icons/shopping-star-24.png");
+							$("#" + id + "_product-that-added-to-shopping-cart").show();
+							$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
+							$(".fixed-menu").find(".shopping-basket-itemes").show();
+							$(thiz).data("flag", 1);
+						} else {
+							return false;
 						}
-						$.post("/Vitrins/shopping_cart_session_set", params, function (data, status){
-							if(status === "success"){
-								$( $(thiz).find("img") ).attr("src", "/theme/Vitrin/images/icons/shopping-star-24.png");
-								$("#" + id + "_product-that-added-to-shopping-cart").show();
-								$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
-								$(".fixed-menu").find(".shopping-basket-itemes").show();
-								$(thiz).data("flag", 1);
-							} else {
-								return false;
-							}
-						});
-					} else {
-						ids.push(id);
-						var params = {
-							ids: ids
-						}
-						$.post("/Vitrins/shopping_cart_session_set", params, function (data, status){
-							if(status === "success"){
-								$( $(thiz).find("img") ).attr("src", "/theme/Vitrin/images/icons/shopping-star-24.png");
-								$("#" + id + "_product-that-added-to-shopping-cart").show();
-								$(".fixed-menu").find(".shopping-basket-itemes").html("<b>Show basket\'s itemes (" + ids.length + ")</b>");
-								$(".fixed-menu").find(".shopping-basket-itemes").show();
-								$(thiz).data("flag", 1);
-							} else {
-								return false;
-							}
-						});
-					}		
+					});
 				}
 			});		
 		} else {
@@ -162,10 +144,19 @@ $(document).ready(function (){
 							'<span>' + value.productCost + '</span>'+
 						'</td>'+
 						'<td>'+
+							'<select>'+
+								'<option selected>1</option>'+
+								'<option>2</option>'+
+								'<option>3</option>'+
+								'<option>4</option>'+
+								'<option>5</option>'+
+							'</select>'+
+						'</td>'+
+						'<td>'+
 							'<textarea rows="4">' + value.productDescription + '</textarea>'+
 						'</td>'+
 						'<td>'+
-							'<a href="javascript:void();" onclick="removeShoppingItemes(\'' + value.id + '\');">DELETE</a>'+
+							'<a href="javascript:void();" class="button shopping-cart-popup-delete-btn" onclick="removeShoppingItemes(\'' + value.id + '\');">DELETE</a>'+
 						'</td>'+
 					'</tr>	'+
 				'</table>'

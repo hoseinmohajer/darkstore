@@ -329,9 +329,9 @@
 					</div>
 					<div class="six columns">
 						<div class="project-pagination">
-							<a title="Previous Project" href="#" class="previous-proj"></a>
-							<a title="View All Projects" href="../products" class="all-proj"></a>
-							<a title="Next Project" href="#" class="next-proj"></a>
+							<!-- a title="Previous Project" href="#" class="previous-proj"></a -->
+							<!-- a title="View All Projects" href="../products" class="all-proj"></a -->
+							<!-- a title="Next Project" href="#" class="next-proj"></a -->
 						</div>
 					</div>
 					<div class="twelve columns">
